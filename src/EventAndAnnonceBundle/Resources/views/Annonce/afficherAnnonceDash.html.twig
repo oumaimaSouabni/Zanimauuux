@@ -1,0 +1,120 @@
+{% extends "ZanimauxBundle:User:dashboard.html.twig" %}
+
+
+{% block head %}
+
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('adminpage/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/colorpicker.css')}}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/datepicker.css')}}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/uniform.css')}}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/select2.css')}}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/bootstrap-wysihtml5.css')}}" />
+    <link href="{{ asset('adminpage/font-awesome/css/font-awesome.css')}}" rel="stylesheet" />
+    <link href="{{ asset('adminpage/css/formulaire.css')}}" rel="stylesheet" />
+
+{% endblock %}
+{% block bar_laterale %}
+
+    <div id="sidebar"><a href="{{ path('loginadmin') }}" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+        <ul class="nav">
+            <li ><a href="{{ path('affiche') }}"><i class="icon icon-home"></i> <span>Zanimo</span></a> </li>
+            <li> <a href=""><i class="icon icon-signal"></i> <span>Liste des evenements</span></a> </li>
+            <li> <a href="{{ path('addAdmin')}}"><i class="icon icon-inbox"></i> <span>Ajouter Evenement</span></a> </li>
+            <li> <a href="{{ path('ajouterAnnonceAdmin')}}"><i class="icon icon-inbox"></i> <span>Ajouter annonces</span></a> </li>
+            <li class="active"> <a href="{{ path('afficherAnnonceAdmin')}}"><i class="icon icon-inbox"></i> <span>Liste des annonces</span></a> </li>
+
+
+            <li><a href="grid.html"><i class="icon icon-fullscreen"></i> <span>Full width</span></a></li>
+
+
+
+
+
+        </ul>
+    </div>
+{% endblock %}
+{% block contenu %}
+
+<div id="content">
+    <!--breadcrumbs-->
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="{{ path('loginadmin') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+    </div>
+    <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+            <h5>Liste des evenements </h5>
+        </div>
+
+        <div class="widget-content nopadding" >
+            <table class="recent-posts">
+                {% for annonce in annonces %}
+
+                    <form action="#" method="POST" class="form-horizontal" >
+
+                            <td height="150" width="180">
+                                <div class="control-group" id="cadre">
+                                    <img class="card-img-top image " width="174.217" height="130.667" alt="Annonce" src="{{asset('/img/portfolio')~ annonce.pieceJointe}}">
+                                    <div class="controls">
+
+                                    </div>
+                                </div>
+                            </td>
+                            <td >
+                            <span class="evenement-info">
+                    <div class="control-group" id="cadre">
+                        <label class="control-label"> Titre :  {{ annonce.titre }}</label>
+                        <div class="controls">
+
+                        </div>
+                    </div>
+                    <div class="control-group" id="cadre">
+                        <label class="control-label"> Type :  {{ annonce.type }}</label>
+                        <div class="controls">
+
+                        </div>
+                    </div>
+                     <div class="control-group" id="cadre">
+                        <label class="control-label"> Description :   {{ annonce.description }}</label>
+                        <div class="controls">
+
+                        </div>
+                    </div>
+                            <td> <div class="fr"><a href="{{ path('ajouterAnnonceAdmin',{'idAnnonce':annonce.idAnnonce}) }}" class="btn btn-primary btn-mini" >Modifier</a>
+                                    <a href="{{ path('supprimerAnnonceAdmin',{'idAnnonce':annonce.idAnnonce}) }}" class="btn btn-danger btn-mini" >Supprimer</a>
+                                </div>
+                            </td>
+
+                            </span>
+                            </td>
+                    </form>
+
+                    </tr>
+                {% endfor %}
+                <a href="{{ path('consulter_a')}}" class="btn btn-primary btn-mini">Visualiser en tant que user</a>
+
+            </table>
+
+            {%endblock%}
+
+            {% block script %}
+
+                <script src="{{ asset('adminpage/js/jquery.min.js')}}"></script>
+                <script src="{{ asset('adminpage/js/jquery.ui.custom.js')}}"></script>
+                <script src="{{ asset('adminpage/js/bootstrap.min.js')}}"></script>
+                <script src="{{ asset('adminpage/js/bootstrap-colorpicker.js')}}"></script>
+                <script src="{{ asset('adminpage/js/bootstrap-datepicker.js')}}"></script>
+                <script src="{{ asset('adminpage/js/jquery.toggle.buttons.js')}}"></script>
+                <script src="{{ asset('adminpage/js/masked.js')}}"></script>
+                <script src="{{ asset('adminpage/js/jquery.uniform.js')}}"></script>
+                <script src="{{ asset('adminpage/js/select2.min.js')}}"></script>
+                <script src="{{ asset('adminpage/js/matrix.js')}}"></script>
+                <script src="{{ asset('adminpage/js/matrix.form_common.js')}}"></script>
+                <script src="{{ asset('adminpage/js/wysihtml5-0.3.0.js')}}"></script>
+                <script src="{{ asset('adminpage/js/jquery.peity.min.js')}}"></script>
+                <script src="{{ asset('adminpage/js/bootstrap-wysihtml5.js')}}"></script>
+                <script>
+                    $('.textarea_editor').wysihtml5();
+                </script>
+            {% endblock %}
+

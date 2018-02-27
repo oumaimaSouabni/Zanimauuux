@@ -1,0 +1,78 @@
+{% extends "ZanimauxBundle:User:gestionUtilisateur.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block head %}
+    {{ parent() }}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>
+    <title>{% block title %}{{ parent() }} -Ajoutpromenade{% endblock %}</title>
+
+
+{% endblock %}
+{% block bar_laterale %}
+    <div id="sidebar"><a href="{{ path('loginadmin') }}" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+        <ul>
+            <li><a href="{{ path('redirectPetSitter') }}"><i class="icon icon-home"></i> <span>Mes evenements</span></a> </li>
+            <li class="active"> <a href="{{ path('creerpromenade') }}"><i class="icon icon-signal"></i> <span>Ajout Promenade</span></a> </li>
+            <li> <a href="{{ path('profileDresseur') }}"><i class="icon icon-inbox"></i> <span>Profile</span></a> </li>
+
+    </div>
+{% endblock %}
+
+    {% block form %}
+        <form action="{{ path('creerpromenade') }}" method="POST" class="form-horizontal">
+            {{form_errors(form)}}
+
+
+            <fieldset>
+                <h2 style="color: red">Creation promenade</h2></br>
+                <div class="form-group">
+                    <label for="form_nomParc" class="col-md-2 control_label">Votre nom :</label>
+                    <div class="col-md-3">
+                        {{ form_widget(form.cinPetsitter)}} </div>
+                </div>
+                <div class="form-group">
+                    <label for="form_nomParc" class="col-md-2 control_label">Nom de l'evenement :</label>
+                    <div class="col-md-3">
+                        {{ form_widget(form.nomPromenade) }} </div>
+                </div>
+                <div class="form-group">
+                    <label for="form_nomParc" class="col-md-2 control_label">Categorie d'evenement:</label>
+                    <div class="col-md-3">
+                        {{ form_widget(form.typePromenade) }} </div></div>
+                <div class="form-group">
+                    <label for="form_adresseParc" class="col-md-2 control_label">Lieu :</label>
+                    <div class="col-md-3">
+                        {{ form_widget(form.lieuPromenade) }} </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="form_codePostaleParc" class="col-md-2 control_label">Description :</label>
+                    <div class="col-md-3">
+                        {{ form_widget(form.descriptionPromenade) }} </div>
+                </div>
+                <div class="form-group">
+                    <label for="form_photoParc" class="col-md-2 control_label">Date debut :</label>
+                    <div class="col-md-3">
+                        {{ form_widget(form.datedebutPromenade) }} </div>
+                </div>
+                <div class="form-group">
+                    <label for="form_photoParc" class="col-md-2 control_label">Date fin :</label>
+                    <div class="col-md-3">
+                        {{ form_widget(form.datefinPromenade) }} </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="submit" class="btn btn-primary">Valider <span class="glyphicon glyphicon-ok"></span></button>
+                    </div>
+                </div>
+            </fieldset>
+
+            {{ form_widget(form._token) }}
+        </form>
+    {% endblock %}
+

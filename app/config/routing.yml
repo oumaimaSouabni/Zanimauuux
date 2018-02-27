@@ -1,9 +1,29 @@
+event_and_annonce:
+    resource: "@EventAndAnnonceBundle/Resources/config/routing.yml"
+    prefix:   /event
+
+veterinaire:
+    resource: "@VeterinaireBundle/Resources/config/routing.yml"
+    prefix:   /veterinaire
+magasin:
+    resource: "@MagasinBundle/Resources/config/routing.yml"
+    prefix:   /magasin
+petsitter_dresseur:
+    resource: "@PetSitterDresseurBundle/Resources/config/routing.yml"
+    prefix:   /petsitter
+refuge:
+    resource: "@RefugeBundle/Resources/config/routing.yml"
+    prefix:   /refuge
+
 zanimaux:
     resource: "@ZanimauxBundle/Resources/config/routing.yml"
     prefix:   /
-
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+mgilet_notifications:
+    resource: "@MgiletNotificationBundle/Controller/"
+    prefix: /notifications

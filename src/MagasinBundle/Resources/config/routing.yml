@@ -1,0 +1,59 @@
+magasin_homepage:
+    path:     /
+    defaults: { _controller: MagasinBundle:Default:index }
+afficheMagasinProp:
+    path:     /afficheMagasinProp
+    defaults: { _controller: MagasinBundle:Magasin:afficheMagasinProp }
+suppMagasinProp:
+    path:     /suppMagasinProp/{idMagasin}
+    defaults: { _controller: MagasinBundle:Magasin:suppMagasinProp }
+modifMagasinProp:
+    path:     /modifMagasinProp/{idMagasin}
+    defaults: { _controller: MagasinBundle:Magasin:modifMagasinProp }
+
+affiche_m:
+    path:     /afficheM
+    defaults: { _controller: MagasinBundle:Magasin:afficheMagasin }
+ajout_m:
+    path:     /ajoutM
+    defaults: { _controller: MagasinBundle:Magasin:ajoutMagasin }
+
+afficheProduit_m:
+    path:     /affichePM/{idMagasin}
+    defaults: { _controller: MagasinBundle:Produit:afficheProduitM }
+affichePrduit_mDash:
+    path:     /gerePM
+    defaults: { _controller: MagasinBundle:Produit:afficheProduitMDash }
+modifProduit_m:
+    path:     /modifPM/{idProduit}
+    defaults: { _controller: MagasinBundle:Produit:modifProduitM }
+suppProduit_m:
+    path:     /suppPM/{idProduit}
+    defaults: { _controller: MagasinBundle:Produit:suppProduitM }
+ajoutProduit_m:
+    path:     /ajoutPM
+    defaults: { _controller: MagasinBundle:Produit:ajoutProduitM }
+ajoutProduit_p:
+    path:     /ajoutProdPanier/{idProduit}/{prix}
+    defaults: { _controller: MagasinBundle:Panier:ajouterProduitPanier }
+suppProduit_p:
+    path:     /suppProdPanier/{idContenuPanier}/{prix}/{quantite}
+    defaults: { _controller: MagasinBundle:Panier:supprimerProduitPanier }
+affichePanier:
+    path:     /affichePanier
+    defaults: { _controller: MagasinBundle:Panier:affichePanier }
+ModifPanier:
+    path:     /modifPanier
+    defaults: { _controller: MagasinBundle:Panier:modifPanier }
+afficheCommande:
+    path:     /afficheCommande
+    defaults: { _controller: MagasinBundle:Commande:afficheCommande }
+passeCommande:
+    path:     /passeCommande
+    defaults: { _controller: MagasinBundle:Commande:passeCommande }
+suppCommande:
+    path:     /suppCommande
+    defaults: { _controller: MagasinBundle:Commande:suppCommande }
+modifPanier:
+    path:     /modifPanier/{idProduit}/{cin}/{quantite}
+    defaults: { _controller: MagasinBundle:Panier:modifPanier }

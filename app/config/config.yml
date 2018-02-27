@@ -3,6 +3,11 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@ZanimauxBundle/Resources/config/services.yml" }
+    - { resource: "@RefugeBundle/Resources/config/services.yml" }
+    - { resource: "@MagasinBundle/Resources/config/services.yml" }
+    - { resource: "@VeterinaireBundle/Resources/config/services.yml" }
+    - { resource: "@PetSitterDresseurBundle/Resources/config/services.yml" }
+    - { resource: "@EventAndAnnonceBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -78,3 +83,35 @@ fos_user:
     registration:
             form:
                 type: ZanimauxBundle\Form\RegistrationType
+nomaya_social:
+    buttons:
+        facebook:
+            url:            null
+            locale:         "fr_FR"
+            send:           false
+            width:          300
+            showFaces:      false
+            layout:         "button_count"
+        twitter:
+            url:            null
+            locale:         "fr"
+            message:        "Je veux partager ça avec vous"
+            text:           "Tweet"
+            via:            "Esprit Test"
+            tag:            "Esprit"
+        googleplus:
+            url:            null
+            locale :        "fr"
+            size :          "medium"
+            annotation :    "bubble"
+            width :         300
+        linkedin:
+            url:            null
+            locale:         "fr_FR"
+            counter:        "right"
+        pinterest:
+            url:            null
+    links:
+        facebook:           "http://www.facebook.com/maroua.arifa.9"
+        googleplus:         "https://plus.google.com/105931415830389032796"
+    theme:                  'default' # optional

@@ -1,0 +1,190 @@
+<head>
+    <meta charset='UTF-8'>
+    <meta name="robots" content="noindex">
+    <link rel="shortcut icon" type="image/x-icon" href='//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico') }}" />
+    <link rel="mask-icon" type="" href="{{ asset('//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg') }}" color="#111" />
+    <link rel="canonical" href='https://codepen.io/xichen/pen/gmvNvp?depth=everything&order=popularity&page=34&q=vue&show_forks=false' />
+    <link rel='stylesheet prefetch' href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css') }}"/>
+    <link rel='stylesheet prefetch' href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css') }}">
+    <style class="cp-pen-styles">*
+        {
+            outline: none;
+        }
+
+        body {
+            background: #eee;
+            letter-spacing: 0.05em;
+            color: #465768;
+            font-family: sans-serif;
+        }
+
+        #app {
+            width: 600px;
+            padding: 15px;
+            margin: 0 auto;
+            margin-top: 15px;
+            background: #fcfcfc;
+            box-shadow: 1px 2px 3px #ccc, 1px 2px 25px #ddd;
+            -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+        }
+
+        .table {
+            width: 100%;
+        }
+        .table th, .table td {
+            padding: 0.5em;
+        }
+        .table thead th {
+            border-bottom: 2px solid #abc;
+        }
+        .table td {
+            border-bottom: 1px solid #abc;
+        }
+        .table tbody tr:last-of-type td {
+            border-bottom-width: 2px;
+        }
+        .table .cart_item_img {
+            width: 80px;
+        }
+        .table .cart_item_qty {
+            text-align: center;
+            min-width: 140px;
+            width: 140px;
+        }
+        .table .cart_item_qty::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .table .cart_item_qty a, .table .cart_item_qty input {
+            float: left;
+            height: 27px;
+        }
+        .table .cart_item_qty a {
+            min-width: 27px;
+            border: 1px solid #ccc;
+            text-align: center;
+            border-radius: 3px;
+            padding-left: 3px;
+            background: #fafafa;
+            text-decoration: none;
+            -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+        }
+        .table .cart_item_qty a:hover {
+            box-shadow: 1px 2px 3px #ccc;
+        }
+        .table .cart_item_qty input {
+            width: calc( 100% - 54px - 10px);
+            text-align: center;
+            margin-left: 5px;
+            margin-right: 5px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            box-shadow: 0 1px 3px #ddd;
+        }
+        .table .cart_item_price, .table .cart_item_tprice {
+            text-align: right;
+        }
+
+        .page-btn {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            margin: 0;
+            text-align: right;
+        }
+        .page-btn .btn:focus {
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h2>Mon Panier</h2>
+    <div class="cart_content">
+        <table class="table">
+            <thead>
+            <th colspan="2">Produits</th>
+            <th class="cart_item_qty">Quantité</th>
+            <th class="cart_item_price">Prix unitaire</th>
+            <th class="cart_item_tprice">Total</th>
+            <th> </th>
+            </thead>
+            <tbody>
+            {% for c in cPanier  %}
+                <tr>
+                    <td class="cart_item_img"><img src="{{asset('img/produit/'~c.IdProduit.photoProduit )}}" style=" width: 80px;height: 80px "/></td>
+                    <td>{{ c.IdProduit.libelle  }}</td>
+                    <td class="cart_item_qty">
+                        <button class="inc button num_minus" >+</button>
+                        <input type="text" value="{{ c.Quantite }}" name="quantite" onblur="updatePanier({{ c.IdProduit.IdProduit }}, {{ c.Cin.Cin }},this.value )"/>
+                        <button class="dec button num_plus">-</button>
+
+                    </td>
+                    <td class="cart_item_price prix"><b >{{ c.idProduit.Prix }}</b>DT</td>
+                    <td class="cart_item_tprice pt pq"><b>{{ c.idProduit.Prix*c.Quantite }}</b>DT</td>
+                    <td><a class="list_item_del" href="{{ path('suppProduit_p',{'idContenuPanier':c.IdContenuPanier,'prix':c.idProduit.prix,'quantite':c.quantite }) }}"><i class="fa fa-trash-o"></i></a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            {% if cPanier|length > 0 %}
+                <tr >
+                    <td colspan="4">Total</td>
+                    <td class="cart_item_tprice"><b>{{ panier.Somme }}</b>DT</td>
+                    <td> </td>
+                </tr>
+            {% else %}
+                <tr >
+                    <td colspan="6">Vous n'avez pas encore ajouter des produit à votre panier</td>
+                </tr>
+            {% endif %}
+            </tfoot>
+        </table>
+
+    </div>
+    <p class="page-btn"><a class="btn" href="{{ path('passeCommande') }}">Passer Commande</a>
+        <button class="btn btn-primary btn-sm refresh" type="submit"><i class="fa fa-refresh"></i></button>
+    </p>
+
+</div>
+</body>
+<script src="{{ asset('//code.jquery.com/jquery-1.11.1.min.js') }}"></script>
+
+<script>
+
+    $(".button").on("click", function() {
+
+        var $button = $(this);
+        var oldValue = $button.parent().find("input").val();
+        var prix = ($button.parent()).parent().find("td.prix").children().text();
+        var prixT=($button.parent()).parent().find("td.pq").children().text();
+        var prixTotal=$("tfoot tr td b").text();
+
+        if ($button.text() == "+") {
+            var newVal = parseFloat(oldValue) + 1;
+            var newpq=parseFloat(prixT)+parseFloat(prix);
+            var newpt=parseFloat(prixTotal)+parseFloat(prix);
+
+        } else {
+            // Don't allow decrementing below zero
+            if (oldValue > 0) {
+                var newVal = parseFloat(oldValue) - 1;
+                var newpq=parseFloat(prixT) -parseFloat(prix);
+                var newpt=parseFloat(prixTotal)-parseFloat(prix);
+
+            } else {
+                newVal = 0;
+
+
+        }}
+
+        $button.parent().find("input").val(newVal);
+        ($button.parent()).parent().find("td.pq").children().text(newpq);
+        $("tfoot tr td b").text(newpt);
+
+
+
+    });
+</script>

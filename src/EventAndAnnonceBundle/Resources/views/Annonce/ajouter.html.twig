@@ -1,0 +1,88 @@
+{% extends "PetSitterDresseurBundle:Dresseur:InterfaceDresseur.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block head %}
+    {{ parent() }}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>{% block title %}{{ parent() }} -profile{% endblock %}</title>
+    <script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>
+{% endblock %}
+
+{% block menu %}
+    <section class="menu-section">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-12">
+
+                    <div class="navbar-collapse collapse ">
+                        <ul id="menu-top" class="nav navbar-nav navbar-right">
+                            <li><a href="{{ path('redirectDresseur') }}">Accueil</a></li>
+                            <li><a href="index.html">Veterinaire</a></li>
+                            <li><a href="{{ path('consulter_a') }}">Annonce</a></li>
+                            <li><a href="{{ path('read_e') }}" >Evenement</a></li>
+                            <li><a href="{{ path('listparc') }}">Parc</a></li>
+                            <li><a href="{{ path('profileDresseur') }}" class="menu-top-active">Profil</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block contenu %}
+     <form action="{{ path('ajouter_a') }}" method="POST" role="form" style="text-align: center">
+         <br>
+         {{form_errors(form)}}
+
+
+         <fieldset>
+
+             <br> <h2 style="color: #641148">Publier Annonce</h2></br>
+             <br>  <div class="form-group">
+                 <label for="form_titre" style="text-align: center" class="col-md-2 control_label">Titre: </label>
+                 <div class="col-md-3">
+                     {{ form_widget(form.titre) }}
+                 </div>
+             </div></br>
+
+             <br>  <div class="form-group">
+                 <label for="form_type" class="col-md-2 control_label">Type:</label>
+                 <div class="col-md-3">
+                     {{ form_widget(form.type) }}
+                 </div>
+             </div></br>
+
+             <br>   <div class="form-group">
+                 <label for="form_description" class="col-md-2 control_label">Description</label>
+                 <div class="col-md-3">
+                     {{ form_widget(form.description) }}
+                 </div>
+             </div></br>
+
+             <br>   <div class="form-group">
+                 <label for="form_piecejointe" class="col-md-2 control_label">Piece jointe</label>
+                 <div class="col-md-3"aria-required="false">
+                     {{ form_widget(form.pieceJointe) }}
+                 </div>
+             </div></br>
+
+
+
+             <br>  <div class="form-group">
+                 <div class="col-md-offset-2 col-md-10">
+                     <button type="submit" class="btn btn-primary">publier<span class="glyphicon glyphicon-ok"></span></button>
+                 </div>
+             </div></br>
+
+         </fieldset>
+
+         {{ form_widget(form._token) }}
+
+     </form>
+ {% endblock %}
+

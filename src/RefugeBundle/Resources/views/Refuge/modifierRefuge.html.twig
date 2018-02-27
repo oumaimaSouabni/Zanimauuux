@@ -1,0 +1,130 @@
+{% extends "@Zanimaux/dashbord/gallery.html.twig" %}
+
+
+
+{% block esm_li_melfou9_belkol %}
+
+{% endblock %}
+
+
+                {% block container_fluid %}
+                    {% block esm_li_melfou9 %}
+                        {% block tsawer_kol %}
+
+                            <div class="span12" >
+                                <!--breadcrumbs-->
+                                <div id="content-header">
+                                    <div id="breadcrumb"> <a href="{{ path('afficher_refuge_dashboard') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Modifier Vos refuges</a></div>
+                                </div>
+                                <div class="widget-box">
+                                    <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+                                        <h5>Modifier votre refuge</h5>
+                                    </div>
+
+                                    <div class="widget-content nopadding" >
+                                        <form action="#" method="POST" class="form-horizontal" >
+                                            <div class="control-group" id="cadre">
+                                                <label class="control-label">Immatriculation:</label>
+                                                <div class="controls">
+                                                    <input type="text" class="span11" id="input" value="{{ refuge.immatriculation }}" name="immatriculation" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" id="cadre">
+                                                <label class="control-label">Nom refuge:</label>
+                                                <div class="controls">
+                                                    <input type="text" class="span11" id="input" value="{{ refuge.nomrefuge }}" name="nomrefuge"/>
+                                                </div>
+                                            </div>
+                                            <div class="control-group" id="cadre">
+                                                <label class="control-label">Email du Refuge: </label>
+                                                <div class="controls">
+                                                    <input type="text"  class="span11" id="input"  value="{{ refuge.emailrefuge }}" name="emailrefuge" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" id="cadre">
+                                                <label class="control-label">Telephone Refuge: </label>
+                                                <div class="controls">
+                                                    <input type="number"  class="span11" id="input"  value="{{ refuge.telephonerefuge }}" name="telephonerefuge" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" id="cadre">
+                                                <label class="control-label">Fax Refuge: </label>
+                                                <div class="controls">
+                                                    <input type="number"  class="span11" id="input"  value="{{ refuge.faxrefuge }}" name="faxrefuge" />
+                                                </div>
+                                            </div>
+
+                                            <div class="control-group" id="cadre">
+                                                <label class="control-label">Adresse Refuge: </label>
+                                                <div class="controls">
+                                                    <input type="text"  class="span11" id="input"  value="{{ refuge.adresserefuge }}" name="adresserefuge" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" id="cadre">
+                                                <label class="control-label">Gouvernement:</label>
+                                                <div class="controls">
+                                                    <input type="text" class="span11" id="input" value="{{ refuge.gouvernementrefuge }}" name="gouvernementrefuge" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" id="cadre">
+                                                <label class="control-label">Code Postale: </label>
+                                                <div class="controls">
+                                                    <input type="number" class="span11" id="input" value="{{ refuge.codepostalerefuge }}" name="codepostalerefuge"  />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" id="cadre">
+                                                <label class="control-label">Image Refuge:</label>
+                                                <div class="controls">
+                                                    <input type="file" name="photorefuge"/>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label">Vous acceptez des chats?</label>
+                                                <div class="controls">
+                                                    <select name="chat" >
+                                                        <option value="oui">Oui</option>
+                                                        <option value="non">Non</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label">Vous acceptez des Chiens?</label>
+                                                <div class="controls">
+                                                    <select name="chien">
+                                                        <option value="oui">Oui</option>
+                                                        <option value="non">Non</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label">Vous acceptez des Rongeurs?</label>
+                                                <div class="controls">
+                                                    <select name="rongeur">
+                                                        <option value="oui">Oui</option>
+                                                        <option value="non">Non</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="control-group" id="cadre">
+                                                <label class="control-label">Specifiez d'autre type d'animaux que vous acceptez:</label>
+                                                <div class="controls">
+                                                    <input type="text" id="input" value="{{ refuge.autre }}" name="autre"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-actions">
+                                                <button type="submit" value="Modifier" class="btn btn-success" >Modifier</button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        {% endblock %}
+                    {% endblock %}
+
+                {% endblock %}
+
+

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <![endif]-->
+
+    <title>Les refuges</title>
+    <link href="{{ asset('css/image.css') }}" rel="stylesheet" />
+    <!-- BOOTSTRAP CORE STYLE  -->
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" />
+    <!-- FONT AWESOME STYLE  -->
+    <link href="{{ asset('css/font-awesome.css') }} " rel="stylesheet" />
+    <!-- ANIMATE STYLE  -->
+    <link href="{{ asset('css/animate.css') }}" rel="stylesheet" />
+    <!-- FLEXSLIDER STYLE  -->
+    <link href="{{ asset('css/flexslider.css') }}" rel="stylesheet" />
+    <!-- PRETTY PHOTO FOR GALLERY  -->
+    <link href="{{ asset('css/prettyPhoto.css') }}" rel="stylesheet" />
+    <!-- CUSTOM STYLE  -->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+
+    <!-- Our Custom CSS -->
+
+
+    <link href="{{ asset('imageProduit.css') }}" rel="stylesheet">
+
+    <!-- GOOGLE FONTS  -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css' />
+</head>
+<body>
+
+<div class="navbar navbar-inverse set-radius-zero" >
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ path('afficher_refuge') }}">
+
+                <img src="{{ asset('img/logo2.png') }}" />
+            </a>
+
+        </div>
+        <div class="right-div">
+            <nav>
+                <a style="color: #444444" href="{{ path('deconnexion') }}" class="button">Deconnexion</a>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- LOGO HEADER END-->
+
+<section class="menu-section">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-12">
+
+                <div class="navbar-collapse collapse ">
+                    <ul id="menu-top" class="nav navbar-nav navbar-right">
+                        <li><a href="{{ path('affiche') }}" >Accueil</a></li>
+                        <li><a href="index.html">Véterinaire</a></li>
+                        <li><a href="{{ path('afficher_refuge') }}" class="menu-top-active" >Refuge</a></li>
+                        <li><a href="{{ path('affiche_m')}}">Magasin</a></li>
+                        <li><a href="contact.html">Dresseur & pet-sitter</a></li>
+                        <li><a href="features.html">Annonce</a></li>
+                        <li><a href="contact.html">événement</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- MENU SECTION END-->
+
+<div class="below-slideshow">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="txt-block">
+                    <h1 class="head-line">Les animaux vous attendent</h1>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- BELOW SLIDESHOW SECTION END-->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h1 class="tag-home">  Bienvenu au <strong>{{ refuge.nomrefuge }}</strong> , nous espérons que notre famille vous plairez</h1>
+            <hr>
+        </div>
+    </div>
+</div>
+<div class="just-sec" id="port-folio">
+    <div class="container">
+        <div id="content">
+
+            <div class="row">
+                {% for animal in animaux %}
+                    <div class="col-lg-4 col-md-6 mb-4 oumaima">
+                        <div class="card h-100 ">
+                            <a href="#"><img class="card-img-top image" src="{{asset('animaux/'~animal.photoanimal )}}" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="#">Nom: {{ animal.nomanimal }}</a>
+                                </h4>
+                                <h5>Race: {{ animal.race }}</h5>
+                                <p class="card-text">c'est un {{ animal.type }} {{ animal.etat }} et il a {{ animal.age }} ans</p>
+                            </div>
+
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+            <!-- /.row -->
+            Rendez-nous visite sur place:  <a   href="{{ path('adress_map',{'immatriculation': animaux[0].refuge.immatriculation}) }}"><button >voir adresse sur carte </button><i class="fi-marker"></i></a>
+            <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+            <script src="{{ asset('fontawesome-all.min.js') }}"></script>
+
+        </div>
+
+
+    </div>
+</div>
+<div class="container " >
+    <div class="row">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-12 set-div">
+            <div class="just-txt-div text-center">
+                <h3><strong>-- Quel animal vous ressemble le plus? --</strong> </h3>
+                <p>
+                    A treavers notre quiz, vous pouvez savoir quelle  <strong> race </strong> vous convient le plus.
+                    D'habord, vous préférez:
+                    <br><br>
+                </p>
+                <a class="btn btn-info btn-lg" href="{{ path('questionnaire_chat') }}">Chat</a>
+                &nbsp;&nbsp;
+                <a class="btn btn-success btn-lg" href="{{ path('questionnaire_chien') }}">Chien </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="just-txt-div">
+            <b>Les Avis</b>
+
+            {% for comment in commentaires %}
+                {% if comment.id != commentaire.id %}
+
+                {% if comment.cin == idUser %}
+                    <table class="chat-message well" >
+                        <tr>
+
+                <span class="msg-block">
+                    <td>
+                        <img src="{{ asset('adminpage/img/demo/av2.jpg') }}" alt="">
+                    </td>
+                   <td width="100px">
+                       <strong >
+                           <p align="center">{{ comment.cin.prenom }}</p>
+                       </strong>
+                   </td>
+
+                   <td width="300px">
+                       <span class="msg">
+                           <p >{{ comment.contenant }}</p>
+                       </span>
+                   </td>
+                     <td>
+                         <span class="time">{{ comment.date|date('h:m d/m/Y') }}</span>
+                     </td>
+                     <td width="25%"><p align="center">
+                         <a class="btn btn-info btn-lg" href="#">Editer</a>
+
+                         <a class="btn btn-success btn-lg" href="{{ path('supprimer_commentaire',{'id':comment.id}) }}">Supprimer</a>
+                   </p> </td>
+
+                </span>
+
+
+                        </tr>
+                    </table>
+                {% endif %}
+                {% if comment.cin != idUser %}
+                    <table class="chat-message well" >
+                        <tr>
+
+                <span class="msg-block">
+                    <td>
+                        <img src="{{ asset('adminpage/img/demo/av2.jpg') }}" alt="">
+                    </td>
+                   <td width="100px">
+                       <strong >
+                           <p align="center">{{ comment.cin.prenom }}</p>
+                       </strong>
+                   </td>
+
+                   <td width="300px">
+                       <span class="msg">
+                           <p >{{ comment.contenant }}</p>
+                       </span>
+                   </td>
+
+                     <td>
+                         <span class="time">{{ comment.date|date }}</span>
+                     </td>
+
+                </span>
+
+
+                        </tr>
+                    </table>
+                {% endif %}
+            {% endif %}
+            {% endfor %}
+            <div class="chat-message well">
+                <form method="post">
+                    <input name="contenant" id="msg-box" type="text" value="{{ commentaire.contenant }}" >
+                    <button class="btn btn-success">Commenter</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+
+                <h3> <strong>A props le refuge</strong> </h3>
+                <p style="padding-right:50px;">
+                    Notre refuge a pour missions principales de recueillir, héberger,
+                    soigner et réconforter les animaux trouvés ou abandonnés pour les replacer à l'adoption par la suite.                 </p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 social-div">
+
+
+
+                <h3> <strong>Réseaux sociaux</strong> </h3>
+                Trouver nous dans les réseaux sociaux
+                <a href="#"><h4>FACEBOOK </h4></a>
+                <a href="#"><h4>TWITTER </h4></a>
+                <a href="#"><h4>LINKEDIN </h4></a>
+
+
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <h3> <strong>Adresse</strong> </h3>
+
+                <h4>{{ refuge.adresserefuge }}</h4>
+                <h4>{{ refuge.gouvernementrefuge }}</h4>
+                <h4>Tél: {{ refuge.telephonerefuge }}</h4>
+                <h4>E-mail: {{ refuge.emailrefuge }}</h4>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <hr>
+                <div style="text-align:right;padding:5px;">
+                    ©2018 zanimaux.com | <a href="http://www.binarytheme.com/" style="color:#fff;" target="_blank">Designed By: Enigma</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div class="panier">
+    <a class="cartLink" href="PBShoppingCart.asp?PBMInit=1">Panier d'achat :</a>&nbsp;
+    <span class="CartPrice">
+            <strong> 0,00 €</strong></span>
+</div>-->
+<!--FOOTER SECTION END-->
+<!-- WE PUT SCRIPTS AT THE END TO LOAD PAGE FASTER-->
+
+<!--CORE SCRIPTS PLUGIN-->
+<script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>
+<!--BOOTSTRAP SCRIPTS PLUGIN-->
+<script src="{{ asset('js/bootstrap.js') }}"></script>
+<!--WOW SCRIPTS PLUGIN-->
+<script src="{{ asset('js/wow.js') }}"></script>
+<!--FLEXSLIDER SCRIPTS PLUGIN-->
+<script src="{{ asset('js/jquery.flexslider.js') }}"></script>
+<!--CUSTOM SCRIPTS -->
+<script src="{{ asset('js/custom.js') }}"></script>
+
+
+
+<!--PRETTY PHOTO FOR GALLERY -->
+<script src="{{ asset('js/jquery.prettyPhoto.js') }}"></script>
+<!--PHOTO FILTER -->
+<script src="{{ asset('js/jquery.mixitup.min.js') }}"></script>
+
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<!-- Bootstrap Js CDN -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+    });
+</script>
+</body>
+
+</html>

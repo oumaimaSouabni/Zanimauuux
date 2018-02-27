@@ -1,0 +1,76 @@
+{% extends 'ZanimauxBundle:User:gallery.html.twig' %}
+
+{% block esm_li_melfou9_belkol %}
+
+{% endblock %}
+
+
+                {% block container_fluid %}
+                    {% block esm_li_melfou9 %}
+                        {% block tsawer_kol %}
+
+                            <div class="span12">
+                                <!--breadcrumbs-->
+
+                                <div class="widget-box" >
+                                    <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+                                        <h5>Modifier evenement</h5>
+                                    </div>
+                                    <div class="widget-content nopadding" >
+                                        <form action="#" method="POST" class="form-horizontal" >
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label"> Titre :</label>
+                                                <div class="controls">
+                                                    <input type="text" class="span11" class="input" placeholder="nom de votre magasin" name="nomMagasin" value="{{ evenement.titre}}"/>
+                                                </div>
+                                            </div>
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">Type :  </label>
+                                                <div class="controls">
+                                                    <input type="text"  class="span11" class="input"  placeholder="l'adresse de votre magasin" name="adresseMagasin" value="{{ evenement.type }}" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">Lieu : </label>
+                                                <div class="controls">
+                                                    <input type="text" class="span11" class="input" name="villeMagasin" value="{{ evenement.lieu }}" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">date de debut:  </label>
+                                                <div class="controls">
+                                                    <input type="number" class="span11" class="input" name="codePostaleMagasin" value="{{ evenement.datedebut}}" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">date de fin:   </label>
+                                                <div class="controls">
+                                                    <input type="number" class="span11" class="input" name="codePostaleMagasin" value="{{ evenement.datefin}}" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">Description :   </label>
+                                                <div class="controls">
+                                                    <input type="number" class="span11" class="input" name="codePostaleMagasin" value="{{ evenement.description}}" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">Piece jointe: </label>
+                                                <div class="controls">
+                                                    <input type="file" name="imageEvt"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-actions">
+                                                <button type="submit" value="submit" class="btn btn-success">Modifier</button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        {% endblock %}
+                    {% endblock %}
+
+                {% endblock %}
+
+

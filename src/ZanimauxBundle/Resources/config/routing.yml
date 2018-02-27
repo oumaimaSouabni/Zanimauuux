@@ -31,6 +31,8 @@ delete:
 gereruser:
     path:     /gerer
     defaults: { _controller: ZanimauxBundle:User:adminuser}
-
+edituser:
+    path:     /gerer2/{id}
+    defaults: { _controller: ZanimauxBundle:User:adminEdituser}
 
 

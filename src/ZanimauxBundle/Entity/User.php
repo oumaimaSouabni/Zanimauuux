@@ -11,9 +11,12 @@ namespace ZanimauxBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
+
+
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PetSitterDresseurBundle\Repository\UserRepository")
  * @ORM\Table(name="fos_user")
+ *
  */
 class User extends BaseUser
 {
@@ -79,8 +82,6 @@ class User extends BaseUser
      * @ORM\Column(name="demande", type="integer", length=255, nullable=true)
      */
     private $demande;
-
-
 
 
     /**
@@ -219,16 +220,20 @@ class User extends BaseUser
     }
 
     /**
-     * Set id
-     *
-     * @param string $id
-     *
-     * @return User
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
      */
     public function setId($id)
     {
         $this->id = $id;
-
-        return $this;
     }
+
+
 }

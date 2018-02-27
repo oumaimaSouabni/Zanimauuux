@@ -1,0 +1,45 @@
+:root {
+    /* if u want to change the color of
+     * the ripple change this value
+    */
+    --color-ripple: rgba(255,255,255,0.8);
+}
+
+
+.cont {
+
+    height: 50px;
+    width: 120px;
+    margin: auto;
+}
+*[data-animation="ripple"] {
+    position: relative; /*Position relative is required*/
+    height: 100%;
+    width: 100%;
+    display: block;
+    outline: none;
+    padding: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #b3d7ff 0%,#bee5eb 100%);
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 14px;
+    font-family: sans-serif;
+    font-weight: 200;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    font-size: xx-small;
+    cursor: pointer;
+    /*border-radius: 50px;*/
+    -webkit-tap-highlight-color: transparent;
+}
+
+*[data-animation="ripple"]:focus {
+    outline: none;
+}
+
+*[data-animation="ripple"]::selection {
+    background: transparent;
+    pointer-events: none;
+}

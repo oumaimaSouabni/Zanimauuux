@@ -1,0 +1,92 @@
+{% extends "@Refuge/dashbord/gallery.html.twig" %}
+
+{% block bar_laterale %}
+    <div id="sidebar"><a href="{{ path('proprietaire_refuge') }}" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+        <ul>
+            <li class="active"><a href="{{ path('afficher_refuge_dashboard') }}"><i class="icon icon-home"></i> <span>Vos refuges</span></a> </li>
+            <li > <a href="{{ path('ajouter_refuge') }}"><i class="icon icon-signal"></i> <span>Ajout Refuge</span></a> </li>
+            <li > <a href="{{ path('afficher_animaux')}}"><i class="icon icon-inbox"></i> <span>Gestion Animaux</span></a> </li>
+            <li><a href="{{ asset('adminpage/tables.html') }}"><i class="icon icon-th"></i> <span>Gestion Clients</span></a></li>
+            <li><a href="grid.html"><i class="icon icon-fullscreen"></i> <span>Full width</span></a></li>
+
+            <li class="content"> <span>Monthly Bandwidth Transfer</span>
+                <div class="progress progress-mini progress-danger active progress-striped">
+                    <div style="width: 77%;" class="bar"></div>
+                </div>
+                <span class="percent">77%</span>
+                <div class="stat">21419.94 / 14000 MB</div>
+            </li>
+            <li class="content"> <span>Disk Space Usage</span>
+                <div class="progress progress-mini active progress-striped">
+                    <div style="width: 87%;" class="bar"></div>
+                </div>
+                <span class="percent">87%</span>
+                <div class="stat">604.44 / 4000 MB</div>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+{% block esm_li_melfou9_belkol %}
+    <div id="breadcrumb"> <a href="{{ path('proprietaire_refuge') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{{ path('afficher_animaux') }}">Gestion des animaux</a>  </div>
+    <h1>Gestion des animaux</h1>
+    </div>
+{% endblock %}
+
+            {% block esm_li_melfou9 %}
+
+                <div class="span12">
+
+                    <div class="widget-box">
+                        <div class="widget-title"> <span class="icon"> <i class="icon-picture"></i> </span>
+                            <h5>Mes animaux</h5>
+                        </div>
+                        {% block tsawer_kol %}
+
+                        <div class="widget-content nopadding">
+
+                            <table  class="recent-posts">
+                                {% for refuge in refuges %}
+
+
+                                    <tr >
+                                        <td height="150" width="180">  <img width="174.217" height="130.667" alt="User" src="{{asset('refuges/'~ refuge.photorefuge )}}"> </td>
+                                        <div class="article-post">
+
+                                            <td width="400"> <span class="user-info">
+                                                  <b>Immatriculation:</b>  {{ refuge.immatriculation }}<br>
+                                                         <b>Nom de refuge:</b> {{ refuge.nomrefuge }}<br>
+                                                         <b>Email:</b>  {{ refuge.emailrefuge }} ans<br>
+                                                          <b>Telephone:</b> {{ refuge.telephonerefuge }}<br>
+                                                         <b> Fax: </b>{{ refuge.faxrefuge }}<br>
+                                                    <b>Adresse:</b> {{ refuge.adresserefuge }}<br>
+                                                    <b>gouvernement:</b> {{ refuge.gouvernementrefuge }}<br>
+                                                    <b>Code Postal:</b>{{ refuge.codepostalerefuge }}<br>
+                                                    <b>Vous avez des: chat: </b>{{ refuge.chat }}
+                                                    <b> chien: </b>{{ refuge.chien }}
+                                                    <b> rongeurs: </b>{{ refuge.rongeur }}
+                                                    <b> autre: </b>{{ refuge.autre }}
+                                                       </span>
+                                            </td>
+                                            <td> <div class="fr"><a href="{{ path('modifier_refuge',{'immatriculation':refuge.immatriculation}) }}" class="btn btn-primary btn-mini" >Edit</a>
+                                                    <a href="{{ path('delete_refuge',{'immatriculation':refuge.immatriculation}) }}" class="btn btn-danger btn-mini" >Delete</a>
+                                                </div>
+                                            </td>
+
+                                        </div>
+                                    </tr>
+
+
+                                {% endfor %}
+                            </table>
+
+                            <a href="{{ path('afficher_refuge') }}"><button  class="btn btn-warning btn-mini" >Visualiser Les refuges en tant que client</button></a>
+
+                        </div>
+                    </div>
+
+
+
+                    {% endblock %}
+                </div>
+                </div>
+            {% endblock %}

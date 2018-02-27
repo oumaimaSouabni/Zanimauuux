@@ -1,0 +1,48 @@
+pet_sitter_dresseur_homepage:
+    path:     /
+    defaults: { _controller: PetSitterDresseurBundle:Default:index }
+redirectPetSitter:
+    path:     /redirect3
+    defaults: { _controller: PetSitterDresseurBundle:PetSitter:redirect }
+recherche_Parc_DQL:
+    path:     /rechercheDQLParc
+    defaults: { _controller: PetSitterDresseurBundle:Dresseur:recherche }
+creerpromenade:
+    path:     /creerp
+    defaults: { _controller: PetSitterDresseurBundle:PetSitter:creePromenade }
+deletepromenade:
+    path:     /deletepromenade/{id}
+    defaults: { _controller: PetSitterDresseurBundle:PetSitter:deletePromenade}
+editpromenade:
+    path:     /editpromenade/{id}
+    defaults: { _controller: PetSitterDresseurBundle:PetSitter:updatePromenade}
+recherche_Promenade_DQL:
+    path:     /rechercheDQLPromenade
+    defaults: { _controller: PetSitterDresseurBundle:PetSitter:recherche }
+rating:
+    path:     /avis/{id}
+    defaults: { _controller: PetSitterDresseurBundle:Dresseur:rating }
+consulter:
+    path:     /consulparc/{id)
+    defaults: { _controller: PetSitterDresseurBundle:Dresseur:consulterParc }
+creerparc:
+    path:     /creerparc
+    defaults: { _controller: PetSitterDresseurBundle:Dresseur:creeParc}
+listparc:
+    path:     /listparc
+    defaults: { _controller: PetSitterDresseurBundle:Dresseur:afficheParc}
+editparc:
+    path:     /editparc/{id}
+    defaults: { _controller: PetSitterDresseurBundle:Dresseur:updateParc}
+deleteparc:
+    path:     /deleteparc/{id}
+    defaults: { _controller: PetSitterDresseurBundle:Dresseur:deleteParc}
+profileDresseur:
+    path:     /profile2
+    defaults: { _controller: PetSitterDresseurBundle:Dresseur:show }
+editDresseur:
+    path:     /profile3/{id}
+    defaults: { _controller: PetSitterDresseurBundle:Dresseur:update }
+redirectDresseur:
+    path:     /redirect2
+    defaults: { _controller: PetSitterDresseurBundle:Dresseur:redirect }

@@ -1,0 +1,108 @@
+{% extends "VeterinaireBundle:Cabinet:dashboard_vet.html.twig" %}
+
+
+{% block head %}
+
+
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('adminpage/bootstrap.css') }}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/colorpicker.css')}}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/datepicker.css')}}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/uniform.css')}}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/select2.css')}}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/bootstrap-wysihtml5.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('adminpage/daterangepicker.css') }}" />
+    <link href="{{ asset('adminpage/font-awesome/css/font-awesome.css')}}" rel="stylesheet" />
+    <link href="{{ asset('adminpage/css/formulaire.css')}}" rel="stylesheet" />
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+
+{% endblock %}
+
+
+
+{% block contenu %}
+    <div id="content">
+        <!--breadcrumbs-->
+        <div id="content-header">
+            <div id="breadcrumb"> <a href="{{ path('loginadmin') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+        </div>
+        <div class="widget-box">
+            <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+                <h5>Disponibilité</h5>
+            </div>
+            <div class="widget-content nopadding" >
+                <form action="#" method="POST" class="form-horizontal" >
+
+                            <div class="col-md-6">
+                            <h5>Date Debut </h5>
+                            <i class="fa fa-calendar" aria-hidden="true"></i> <span id="date_debut_content"></span>
+                            <input type="hidden" name="date_debut" id="date_debut" placeholder="Date Debut"  required>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Date Fin </h5>
+                            <i class="fa fa-calendar" aria-hidden="true"></i> <span id="date_fin_content"></span>
+                            <input type="hidden" name="date_fin" id="date_fin" placeholder="Date Fin"  required>
+                        </div>
+
+                        <input class="col-md-6" name="dates" placeholder="Date" id="dates" type="text" readonly>
+
+                    <a onclick="submitForm()" class="button preview margin-top-10">Ajouter <i class="fa fa-arrow-circle-right"></i></a>
+                    <input id="btn_submit" class="hidden" type="submit">
+            </form>
+        </div>
+
+    </div>
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{ asset('adminpage/jquery-1.11.1.min.js') }}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ asset('adminpage/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('adminpage/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('adminpage/daterangepicker.js') }}"></script>
+    <script>
+        function submitForm(){
+            if($('#date_debut').val() === "" || $('#date_fin').val() === ""){
+                alert("Veullez choisir la date de debut et la date de fin !");
+                return;
+            }
+            $('#btn_submit').click();
+        }
+        //$('#dates').daterangepicker();
+
+        $('#dates').daterangepicker({
+            timePicker: true,
+            timePickerIncrement: 30,
+            startDate: moment(),
+            endDate: moment(),
+            minDate: moment(),
+            maxDate: '12/30/' + (parseInt(moment().format('YYYY')) + 1),
+            isInvalidDate: function(date) {
+                return date.day() === 6;
+            },
+            opens: "center",
+            locale: {
+                format: 'YYYY-MM-DD h:mm A'
+            },
+        }, function(start, end, label) {
+            $('#date_debut').val(start.format('YYYY-MM-DD h:mm A'));
+            $('#date_fin').val(end.format('YYYY-MM-DD h:mm A'));
+            $('#date_debut_content').html(start.format('YYYY-MM-DD h:mm A'));
+            $('#date_fin_content').html(end.format('YYYY-MM-DD h:mm A'));
+            console.log("New date range selected: ' + start.format('YYYY-MM-DD h:mm A') + ' to ' + end.format('YYYY-MM-DD h:mm A') + ' (predefined range: ' + label + ')");
+        });
+
+        $('#dates').click();
+
+    </script>
+
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,107 @@
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="{{ asset('/css/facture.css') }}" rel="stylesheet" id="bootstrap-css">
+<meta charset="UTF-8">
+
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+
+    <div class="row color-invoice">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-lg-7 col-md-7 col-sm-7">
+                    <h1>Facture</h1>
+                    <br />
+                    <strong>Email : </strong> zanimo.esprit@gmail.com
+                    <br />
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-lg-7 col-md-7 col-sm-7">
+                    <h3>Details client: </h3>
+                    <h5>{{ panier.cin.prenom }} {{ panier.cin.nom }} </h5> {{ panier.cin.codePostale }} , {{ panier.cin.adresse }}, {{ panier.cin.ville }}
+                    <br /> Tunis
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5">
+                    <h3>Information Client :</h3> Telephone: {{ panier.cin.telephone }}
+                    <br> email: {{ panier.cin.email }}
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <strong>Produits et details :</strong>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Designation</th>
+                                <th>Quantité</th>
+                                <th>Prix unitaire</th>
+                                <th>Prix total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for c in cPanier %}
+                            <tr>
+
+                                <td>{{ c.IdContenuPanier }}</td>
+                                <td>{{ c.IdProduit.Libelle }}</td>
+                                <td>{{ c.Quantite }}</td>
+                                <td>{{ c.idProduit.Prix }}DT</td>
+                                <td>{{ c.Quantite*c.idProduit.Prix }} DT</td>
+                            </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr>
+                    <div>
+                        <h4>  Total : {{ panier.SommeCommande }}DT </h4>
+                    </div>
+                    <hr>
+                    <div>
+                        <h4>  Livraison : 10DT </h4>
+                    </div>
+                    <hr>
+                    <div>
+                        <h3>  Montant à payer : {{ panier.SommeCommande +10}}DT </h3>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <strong> Important: </strong>
+                    <ol>
+                        <li>
+                            les produits livrés ne peuvent pas faire l'objet d'un retour
+
+                        </li>
+                        <li>
+                            vous ne pouvez pas annuler la commande aprés 3jours de la date de sa passation
+                        </li>
+                        <li>
+                            Si le livreur ne vous trouve pas dans l'adresse de livraison, alors vous trouverez votre commande dans la poste la plus proche.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+
+
+            </div>
+        </div>
+    </div>
+</div>

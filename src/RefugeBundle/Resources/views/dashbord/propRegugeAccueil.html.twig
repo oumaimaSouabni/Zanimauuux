@@ -1,0 +1,51 @@
+{% extends "ZanimauxBundle:User:dashboard.html.twig" %}
+
+{% block head %}
+    {{ parent() }}
+    <title>Dashboard Refuge</title>
+{% endblock %}
+
+    {% block bar_laterale %}
+        <div id="sidebar"><a href="{{ path('proprietaire_refuge') }}" class="visible-phone"><i class="icon icon-home"></i> Refuge</a>
+            <ul>
+                <li ><a href="{{ path('afficher_refuge_dashboard') }}"><i class="icon icon-home"></i> <span>Vos refuges</span></a> </li>
+
+                <li> <a href="{{ path('ajouter_refuge') }}"><i class="icon icon-signal"></i> <span>Ajout Refuge</span></a> </li>
+
+                <li> <a href="{{ path('afficher_animaux')}}"><i class="icon icon-inbox"></i> <span>Gestion Animaux</span></a> </li>
+                <li><a href="{{ asset('adminpage/tables.html') }}"><i class="icon icon-th"></i> <span>Gestion Clients</span></a></li>
+                <li><a href="grid.html"><i class="icon icon-fullscreen"></i> <span>Full width</span></a></li>
+
+
+                <li class="content"> <span>Monthly Bandwidth Transfer</span>
+                    <div class="progress progress-mini progress-danger active progress-striped">
+                        <div style="width: 77%;" class="bar"></div>
+                    </div>
+                    <span class="percent">77%</span>
+                    <div class="stat">21419.94 / 14000 MB</div>
+                </li>
+                <li class="content"> <span>Disk Space Usage</span>
+                    <div class="progress progress-mini active progress-striped">
+                        <div style="width: 87%;" class="bar"></div>
+                    </div>
+                    <span class="percent">87%</span>
+                    <div class="stat">604.44 / 4000 MB</div>
+                </li>
+            </ul>
+        </div>
+    {% endblock %}
+        {% block contenu %}
+            <div id="content">
+                <!--breadcrumbs-->
+                <div id="content-header">
+                    <div id="breadcrumb"> <a href="{{ path('loginadmin') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+                </div>
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+            <h1 align="center">Bienvenu dans notre site</h1>
+
+
+
+
+            </div>
+        {% endblock %}
+

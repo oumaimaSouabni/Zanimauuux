@@ -1,0 +1,55 @@
+{% extends "ZanimauxBundle:User:InterfaceDresseur.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block head %}
+    {{ parent() }}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>{% block title %}{{ parent() }} -profile{% endblock %}</title>
+    <script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>
+{% endblock %}
+
+{% block menu %}
+    <section class="menu-section">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-12">
+
+                    <div class="navbar-collapse collapse ">
+                        <ul id="menu-top" class="nav navbar-nav navbar-right">
+                            <li><a href="{{ path('redirectDresseur') }}">Accueil</a></li>
+                            <li><a href="index.html">Veterinaire</a></li>
+                            <li><a href="{{ path('consulter_a') }}">Annonce</a></li>
+                            <li><a href="{{ path('read_e') }}" >Evenement</a></li>
+                            <li><a href="{{ path('listparc') }}">Parc</a></li>
+                            <li><a href="{{ path('profileDresseur') }}" class="menu-top-active">Profil</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block contenu %}
+<div class="just-sec" id="port-folio">
+
+
+    <div class="container">
+
+        <div class="row " >
+            <div class="widget-box">
+            <fieldset class="form-group col-sm-6 col-xs-12">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input type="submit" value="Modify" class="btn-success" style="text-align: match-parent">
+                {{ form_end(form) }}
+            </fieldset>
+            </div>
+        </div>
+    </div>
+</div>
+    {% endblock %}

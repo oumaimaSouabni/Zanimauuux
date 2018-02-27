@@ -1,0 +1,74 @@
+{% extends "ZanimauxBundle:User:gestionUtilisateur.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block head %}
+    {{ parent() }}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>
+    <title>{% block title %}{{ parent() }} -Editparc{% endblock %}</title>
+
+
+{% endblock %}
+{% block bar_laterale %}
+    <div id="sidebar"><a href="{{ path('loginadmin') }}" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+        <ul>
+            <li><a href="{{ path('redirectDresseur') }}"><i class="icon icon-home"></i> <span>Mes Parcs</span></a> </li>
+            <li class="active"> <a href="{{ path('creerparc') }}"><i class="icon icon-signal"></i> <span>Ajout Parc</span></a> </li>
+            <li> <a href="{{ path('profileDresseur') }}"><i class="icon icon-inbox"></i> <span>Profile</span></a> </li>
+
+        </ul>
+    </div>
+{% endblock %}
+
+    {% block form %}
+        <center>
+        <form action="{{ path('editparc',{'id':parc.id }) }}" method="POST" class="form-horizontal">
+
+                    {{form_errors(form)}}
+
+
+                    <fieldset>
+                        <h2 style="color: red">Parc</h2></br>
+                        <div class="form-group">
+                            <label for="form_nomParc" class="col-md-2 control_label">Nom :</label>
+                            <div class="col-md-3">
+                                {{ form_widget(form.nomParc) }} </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="form_adresseParc" class="col-md-2 control_label">Adresse :</label>
+                            <div class="col-md-3">
+                                {{ form_widget(form.adresseParc) }} </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="form_villeParc" class="col-md-2 control_label">Ville :</label>
+                            <div class="col-md-3">
+                                {{ form_widget(form.villeParc) }} </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="form_codePostaleParc" class="col-md-2 control_label">Code Postale :</label>
+                            <div class="col-md-3">
+                                {{ form_widget(form.codePostaleParc) }} </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="form_CategorieDressage" class="col-md-2 control_label">Categorie Dressage :</label>
+                            <div class="col-md-3">
+                                {{ form_widget(form.CategorieDressage) }} </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Mettre à jour <span class="glyphicon glyphicon-ok"></span></button>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    {{ form_widget(form._token) }}
+                </form>
+        </center>
+    {% endblock %}
+
+
+
+

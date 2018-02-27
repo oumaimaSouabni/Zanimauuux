@@ -1,0 +1,41 @@
+{% extends "VeterinaireBundle:Shared:dashboard.html.twig" %}
+
+{% block head %}
+    {{ parent() }}
+    <title>Dashboard Veterinaire</title>
+{% endblock %}
+
+    {% block bar_laterale %}
+        <div id="sidebar"><a href="{{ path('loginadmin') }}" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+            <ul>
+                <li class="active"><a href="{{ path('affiche') }}"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
+                <li> <a href="{{ path('addArticle')}}"><i class="icon icon-signal"></i> <span>Ajout Article</span></a> </li>
+                <li> <a href="{{ path('addCabinet')}}"><i class="icon icon-inbox"></i> <span>Ajout Cabinet</span></a> </li>
+
+                <li><a href="{{ path('afficherArticlesBack') }}"><i class="icon icon-fullscreen"></i> <span>Affiche Article</span></a></li>
+
+
+            </ul>
+        </div>
+    {% endblock %}
+        {% block contenu %}
+            <div id="content">
+                <!--breadcrumbs-->
+                <div id="content-header">
+                    <div id="breadcrumb"> <a href="{{ path('loginadmin') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+                </div>
+            </div>
+            <script src="{{ asset('css/calendrier/scripts/picker.js') }}"></script>
+            <script src="{{ asset('css/calendrier/scripts/picker.date.js') }}"></script>
+            <script src="{{ asset('css/calendrier/scripts/legacy.js') }}"></script>
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+            <script src="{{ asset('adminpage/jquery-1.11.1.min.js') }}"></script>
+            <!-- Include all compiled plugins (below), or include individual files as needed -->
+            <script src="{{ asset('adminpage/bootstrap.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('adminpage/moment.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('adminpage/daterangepicker.js') }}"></script>
+
+
+
+        {% endblock %}
+

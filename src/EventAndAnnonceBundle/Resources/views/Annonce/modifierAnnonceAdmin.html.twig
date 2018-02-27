@@ -1,0 +1,58 @@
+{% extends 'ZanimauxBundle:User:gallery.html.twig' %}
+
+{% block esm_li_melfou9_belkol %}
+
+{% endblock %}
+
+
+                {% block container_fluid %}
+                    {% block esm_li_melfou9 %}
+                        {% block tsawer_kol %}
+
+                            <div class="span12">
+                                <!--breadcrumbs-->
+
+                                <div class="widget-box" >
+                                    <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+                                        <h5>Modifier annonce</h5>
+                                    </div>
+                                    <div class="widget-content nopadding" >
+                                        <form action="#" method="POST" class="form-horizontal" >
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">Titre :  </label>
+                                                <div class="controls">
+                                                    <input type="text"  class="span11" class="input"  placeholder="l'adresse de votre magasin" name="type" value="{{ annonce.titre }}" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">Type:  </label>
+                                                <div class="controls">
+                                                    <input type="date" class="span11" class="input" name="date" value="{{ annonce.type}}" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">Description :   </label>
+                                                <div class="controls">
+                                                    <input type="text" class="span11" class="input" name="description" value="{{ annonce.description}}" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">Piece jointe: </label>
+                                                <div class="controls">
+                                                    <input type="file" name="piecejointe"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-actions">
+                                                <button type="submit" value="submit" class="btn btn-success">Modifier</button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        {% endblock %}
+                    {% endblock %}
+
+                {% endblock %}
+
+

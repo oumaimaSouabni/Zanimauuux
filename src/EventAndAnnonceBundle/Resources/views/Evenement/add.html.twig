@@ -1,0 +1,127 @@
+{% extends "ZanimauxBundle::Layout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block head %}
+    {{ parent() }}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+
+    <title>{% block title %}{{ parent() }} -profile{% endblock %}</title>
+    <script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>
+{% endblock %}
+
+{% block menu %}
+    <section class="menu-section">
+
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-12">
+
+                    <div class="navbar-collapse collapse ">
+                        <ul id="menu-top" class="nav navbar-nav navbar-right">
+                            <li><a href="{{ path('redirectDresseur') }}">Accueil</a></li>
+                            <li><a href="index.html">Veterinaire</a></li>
+                            <li><a href="{{ path('consulter_a') }}">Annonce</a></li>
+                            <li><a href="{{ path('read_e') }}" >Evenement</a></li>
+                            <li><a href="{{ path('listparc') }}">Parc</a></li>
+                            <li><a href="{{ path('profileDresseur') }}" class="menu-top-active">Profil</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block contenu %}
+
+    <br><div class="eventFormArea">
+
+        <div class="priceTableTitle">
+
+            <h2>Créer votre événement </h2>
+
+        </div>
+    <div class="eventFormArea">
+
+        {{ form_start(form) }}
+
+
+             <div class="formSection">
+
+
+               <div class="row">
+
+
+
+                 <br>  <div class="form-group col-sm-6 col-xs-12">
+                        {{ form_label(form.titre) }}
+
+
+                        {{ form_widget(form.titre) }}
+                    </div></br>
+
+                 <br>   <div class="form-group col-sm-6 col-xs-12">
+
+                        {{ form_label(form.type) }}
+
+                    {{ form_widget(form.type) }} </div></br>
+
+                   <br> <div class="form-group col-sm-6 col-xs-12">
+
+                        {{ form_label(form.lieu) }}
+
+                        {{ form_widget(form.lieu) }}
+            </div></br>
+
+                   <br> <div class="form-group col-sm-6 col-xs-12">
+                        {{ form_label(form.datedebut) }}
+                        {{ form_widget(form.datedebut) }}
+
+        </div></br>
+                  <br>  <div class="form-group col-sm-6 col-xs-12">
+                        {{ form_label(form.datefin) }}
+
+                        {{ form_widget(form.datefin) }}
+                    </div></br>
+                   <br> <div class="form-group col-sm-6 col-xs-12">
+                        {{ form_label(form.description) }}
+
+                        {{ form_widget(form.description) }}
+                    </div></br>
+
+                   <br> <div class="form-group col-sm-6 col-xs-12">
+                       {{ form_label(form.nbplace) }}
+
+                       {{ form_widget(form.nbplace) }}
+                   </div></br>
+
+
+
+                   <br>  <div class="form-group col-sm-6 col-xs-12">
+
+                        {{ form_label(form.imageEvt) }}
+                        {{ form_widget(form.imageEvt) }}
+                    </div>
+                   <div class="col-md-offset-2 col-md-10">
+
+                       {{ socialButtons( { 'facebook': {'locale':'fr_FR', 'send':true}} ) }}
+
+                   </div>
+               </div></br>
+               </div> </div>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+    </div></div> </div>
+    </section>
+
+
+
+
+ {% endblock %}
+

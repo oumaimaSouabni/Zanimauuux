@@ -1,0 +1,519 @@
+
+<html>
+<head>
+    {% block head %}
+
+        <link rel="stylesheet" href="{{ asset('adminpage/css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('adminpage/css/bootstrap-responsive.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('adminpage/css/uniform.css') }}" />
+        <link rel="stylesheet" href="{{ asset('adminpage/css/matrix-style.css') }}" />
+        <link rel="stylesheet" href="{{ asset('adminpage/css/matrix-media.css') }}" />
+        <link href="{{ asset('adminpage/font-awesome/css/font-awesome.css') }}" rel="stylesheet" />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+        <meta charset="utf-8"/>
+        <title>{% block title %}Layout principal {% endblock %}</title>
+        {% block stylesheet %}
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
+            <link href="{{  asset('css/bootstrap.css') }}" rel="stylesheet" />
+            <!-- FONT AWESOME STYLE  -->
+            <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet" />
+            <!-- ANIMATE STYLE  -->
+            <link href="{{ asset('css/animate.css') }}" rel="stylesheet" />
+            <!-- FLEXSLIDER STYLE  -->
+            <link href="{{ asset('css/flexslider.css') }}" rel="stylesheet" />
+            <!-- CUSTOM STYLE  -->
+            <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+            <link rel="stylesheet" href="{{ asset('adminpage/css/matrix-style.css') }}" />
+
+
+
+            <!-- GOOGLE FONTS  -->
+            <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css' />
+            <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+            <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css' />
+
+        {% endblock %}
+    {% block script %}
+
+        <script src="{{ asset('adminpage/js/jquery.min.js') }}"></script>
+
+    {% endblock %}
+    {% endblock %}
+</head>
+<body>
+{% block up %}
+<div id="container">
+    <div class="navbar navbar-inverse set-radius-zero" >
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('affiche') }}">
+                    <img src="{{ asset('img/logo2.png') }}" />
+                </a>
+
+            </div>
+            <div class="right-div">
+                <nav>
+                    <a style="color: #444444" href="{{ path('inscription') }}" class="button">S'inscrire</a>
+                    <a style="color: #444444" href="{{ path('login') }}" class="button">S'authentifier</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- LOGO HEADER END-->
+    {% block menu %}
+        <section class="menu-section">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-md-12">
+
+                        <div class="navbar-collapse collapse ">
+                            <ul id="menu-top" class="nav navbar-nav navbar-right">
+                                <li><a href="{{ path('affiche') }}" >Accueil</a></li>
+                                <li><a href="{{ path('affiche') }}"  >Veterinaire</a></li>
+                           <!--li><a href="{{ path('indexHWCalculator') }}" class="menu-top-active">Calcul Indice PS</a></li-->
+                                <li><a href="about.html">Refuge</a></li>
+                                <li><a href="gallery.html" >Magasin</a></li>
+                                <li><a href="contact.html">Dresseur & pet-sitter</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+    {% endblock %}
+    <!-- MENU SECTION END-->
+</div>
+{% block  contenu%}
+    <div class="span2">
+        <input type="hidden" id="hiddenNom" value="{{ HWEntity.getNomAnimal() }}" />
+        <input type="hidden" id="hiddenPoid"  value="{{ HWEntity.getPoidAnimal() }}" />
+        <input type="hidden" id="hiddenType"  value="{{ HWEntity.getTypeAnimal() }}" />
+        <input type="hidden" id="hiddenNiveauActivite"  value="{{ HWEntity.getNiveauActivite() }}" />
+        <input type="hidden" id="hiddenNeutered"  value="{{ HWEntity.getNeutered() }}" />
+
+        <input type="hidden" id="hiddenCote"  value="" />
+        <input type="hidden" id="hiddenAbdo"  value="" />
+        <input type="hidden" id="hiddenPoid"  value="" />
+
+    </div>
+    <div id="content">
+        <!--breadcrumbs-->
+        <div id="content-header">
+
+            <div id="breadcrumb" style="margin-top:50px"> <a href="{{ path('loginadmin') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home > </a></div>
+        </div>
+        <div class="container-fluid" style="height: 1500px">
+
+            <div class="row-fluid">
+
+                <div  >  <h4> Calculateur Santé Poid de l'animal </h4> </div>
+                <div class="span10">
+                    <div id="div_questions" style="height: 1450px" class="widget-box">
+                        <span> <h5>&nbsp;&nbsp; Etape1 -----> Etape 2 </h5></span><hr>
+                        <div class="widget-content nopadding" >
+                            <div class="widget-content" style="height: 1000px">
+                                <div class="alert alert-block" style="width:600px;padding: 8px 35px 8px 14px;margin-bottom: 20px;text-shadow: 0 1px 0 rgba(255,255,255,0.5);    color: #3a87ad; background-color: #d9edf7;border-color: #bce8f1; border: 1px solid #fbeed5;">
+                                    <p>Nom de l'animal de companie : {{ HWEntity.getNomAnimal() }} <br>  </p>
+                                    <p>Poids : {{ HWEntity.getPoidAnimal() }} lbs <br>  </p>
+                                    <img src="{{ asset('img/portfolio/vetMariam.jpg') }}" width="250px" align="right" style="position: relative;margin-top: -46px;margin-right: -300px;">
+
+                                </div>
+                                <!--<form>-->
+                                    <div class="alert alert-block" style="width:600px;padding: 8px 35px 8px 14px;margin-bottom: 20px;text-shadow: 0 1px 0 rgba(255,255,255,0.5); background-color: #fcf8e3;border: 1px solid #fbeed5;">
+                                        <h4 class="alert-heading">1. À quel point ces côtes sont-elles «profondes»? </h4>
+                                        <br>Vous devriez être capable de sentir les côtes de votre  {% if HWEntity.getTypeAnimal() == 1  %}  <b> Chat </b> {% else %} <b>Chien</b>  {% endif %} sans fouiller avec vos doigts.
+                                        <br>Regardez la vidéo pour apprendre à évaluer. </p>
+                                        <br><i class="icon-play"></i> <a href="https://www.youtube.com/watch?v=NLp_iq_LOWo" >À quel point ces côtes sont-elles «profondes»?</a>
+
+                                        <br>
+                                        <iframe  width="240px" height="200px" src="https://www.youtube.com/embed/NLp_iq_LOWo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+                                    </div>
+                                    <input type="radio" id="coteChoice1"
+                                           name="cote" value=1>
+                                    <label for="coteChoice1">
+                                        Ils sont trop importants</label>
+
+                                    <input type="radio" id="coteChoice2"
+                                           name="cote" value=2>
+                                    <label for="coteChoice2">
+                                        Ils sont juste</label>
+
+                                    <input type="radio" id="coteChoice3"
+                                           name="cote" value=3>
+                                    <label for="coteChoice3">
+                                        Ils ne sont pas détectables</label>
+                                    <br> <br>
+
+                                    <div class="alert alert-block" style="width:600px;padding: 8px 35px 8px 14px;margin-bottom: 20px;text-shadow: 0 1px 0 rgba(255,255,255,0.5); background-color: #fcf8e3;border: 1px solid #fbeed5;">
+                                    <h4 class="alert-heading"> 2. Évaluez la «taille» de votre {% if HWEntity.getTypeAnimal() == 1  %}  <b> Chat </b> {% else %} <b>Chien</b>  {% endif %}  </h4>
+                                    <br>Vous devriez être en mesure de voir la taille naturelle de votre {% if HWEntity.getTypeAnimal() == 1  %}  <b> Chat </b> {% else %} <b>Chien</b>  {% endif %}  vu d'en haut.
+                                    <br>Regardez la vidéo pour obtenir des instructions.</p>
+                                    <br><i class="icon-play"></i> <a href="https://www.youtube.com/watch?v=QNgUdr47hes" >Évaluez la «taille» de votre {% if HWEntity.getTypeAnimal() == 1  %}  <b> Chat </b> {% else %} <b>Chien</b>  {% endif %} </a>
+                                        <br>
+                                        <iframe  width="240px" height="200px" src="https://www.youtube.com/embed/QNgUdr47hes" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+                                    </div>
+                                    <input type="radio" id="poidChoice1"
+                                           name="poid" value=1>
+                                    <label for="poidChoice1">
+
+                                        Forme de sablier proéminent</label>
+
+                                    <input type="radio" id="poidChoice2"
+                                           name="poid" value=2>
+                                    <label for="poidChoice2">
+                                        Bien proportionné</label>
+
+                                    <input type="radio" id="poidChoice3"
+                                           name="poid"  value=3>
+                                    <label for="poidChoice3">
+                                        Non visible</label>
+                                    <br>
+                                    <br>
+                                    <div class="alert alert-block" style="width:600px;padding: 8px 35px 8px 14px;margin-bottom: 20px;text-shadow: 0 1px 0 rgba(255,255,255,0.5); background-color: #fcf8e3;border: 1px solid #fbeed5;">
+                                        <h4 class="alert-heading"> 3. Jetez un coup d'oeil du côté </h4>
+                                        <br>L'abdomen de votre {% if HWEntity.getTypeAnimal() == 1  %}  <b> Chat </b> {% else %} <b>Chien</b>  {% endif %}  devrait être coupé et niché.
+                                        <br>Regardez la vidéo pour apprendre exactement comment l'évaluer.</p>
+                                        <br><i class="icon-play"></i> <a href="https://youtu.be/Km9Df0CeWyg" >Jetez un coup d'oeil du côté</a>
+                                        <br>
+                                        <iframe width="240px" height="200px" src="https://www.youtube.com/embed/Km9Df0CeWyg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                    </div>
+                                    <input type="radio" id="abdoChoice1"
+                                           name="abdo" value=1>
+                                    <label for="abdoChoice1">
+                                        Abdominoplastie prononcée</label>
+
+                                    <input type="radio" id="abdoChoice1"
+                                           name="abdo" value=2>
+                                    <label for="abdoChoice2">
+                                        Abdominoplastie proportionnelle</label>
+
+                                    <input type="radio" id="abdoChoice3"
+                                           name="abdo" value=3>
+                                    <label for="abdoChoice3">
+
+                                        Abdominoplastie absente</label>
+                                    <br> <br>
+                                    <div>
+                                        <button class="btn btn-default" onclick="showResult();return false;"  >Valider</button>
+                                    </div>
+
+                               <!--</form>-->
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="div_resultat" class="widget-box" hidden>
+                        <span> <h5>&nbsp;&nbsp; Etape1 -----> Etape 2 -----> Etape 3 </h5></span><hr>
+                        <div class="widget-content nopadding" >
+                            <div class="widget-content" style="height: 1000px">
+                                <div class="alert alert-block" style="width:600px;padding: 8px 35px 8px 14px;margin-bottom: 20px;text-shadow: 0 1px 0 rgba(255,255,255,0.5);    color: #3a87ad; background-color: #d9edf7;border-color: #bce8f1; border: 1px solid #fbeed5;">
+
+                                    <p>Nom de l'animal de companie : {{ HWEntity.getNomAnimal() }} <br>  </p>
+                                    <p>Poids : {{ HWEntity.getPoidAnimal() }} lbs <br>  </p>
+                                    <img src="{{ asset('img/portfolio/vetMariam.jpg') }}"  width="280px" align="right" style="position: relative;margin-top: -46px;margin-right: -320px;">
+                                </div>
+                                <!--<form>-->
+                                <div class="alert alert-block" style="width:600px;padding: 8px 35px 8px 14px;margin-bottom: 20px;text-shadow: 0 1px 0 rgba(255,255,255,0.5); background-color: #fcf8e3;border: 1px solid #fbeed5;">
+                                    <h4 class="alert-heading">Votre évaluation : </h4>
+                                    <br><h5>Les conditions physiques de {{ HWEntity.getNomAnimal() }} </h5> <br>
+
+                                    <span style="color:red;font-weight: bold; font-size: 12px"  id="spanHW" >
+                                    </span>
+                                    <br>
+                                    </p>
+                                </div>
+                                    <div id="dvImage" class="span4">
+                                        <img src="{{ asset('img/cat/cat_bcs_5.jpg') }}" id="imgAnimal" width="230px" align="right">
+                                        <img src="{{ asset('img/scale/scale_5.png') }}" id="imgScale" width="230px" align="right">
+
+                                    </div>
+                                <div class="span6">
+                                    <br><br>
+                                    <span style="margin-bottom: 10px;" name="repCote" ID="repCote"> </span><br><br>
+                                    <span style="margin-bottom: 10px;" name="repPoid" ID="repPoid"> </span><br><br>
+                                    <span style="margin-bottom: 10px;" name="repAbdo" ID="repAbdo"> </span><br>
+                                </div>
+                                <div class="span10">
+                                <img src="{{ asset('img/scale/result_5.png') }}" id="imgResultScale" align="left">
+                                </div>
+
+<br>
+                                    <div id="divDescr1" class="row-fluid span10" style="text-align: justify;font-size: larger;" hidden>
+                                        <br><br>
+                                        {{ HWEntity.getNomAnimal() }} est trop maigre; mais ne vous inquiétez pas on est là pour vous aider !<br>
+
+                                        En se basant sur nos études, le score des conditions du corps de {{ HWEntity.getNomAnimal() }} est inferieur à 5,
+                                        c'est à dire que {{ HWEntity.getNomAnimal() }} a atteint approximativement 20% de l'insuffisance pondérale d'obésité et
+                                        son poids idéal est entre 11.5 et 12.5 pounds, mais on vous conseille de consulter votre vétérinaire pour la simple confirmation,
+                                        basée sur un ensemble d'examination du niveau des activités de votre {% if HWEntity.getTypeAnimal() == 1  %}  <b> Chat </b> {% else %} <b>Chien</b>  {% endif %} .
+                                        <br>Être trop maigre peut être un signe de maladie, ou peut-être {{ HWEntity.getNomAnimal() }}
+                                        ne mange pas assez de calories pour son niveau d'activités.
+                                        <br>Ces maladies qui provoquent la perte du poids peuvent être causer  par des problèmes gastro-intestinales comme
+                                        les parasites ou les difficultés d'absorption des nutritions, diabète et des types de cancer.
+                                        <br>Voici un article pour avoir plus d'informations sur les causes de la perte du poids.
+                                        <br>Et ici vous pouvez lire des conseils spécifiques que nos experts on donné à d'autres
+                                        parents d'animaux qui ont des problèmes de poids.<br>
+
+                                        Prend {{ HWEntity.getNomAnimal() }} à un vétérinaire le plus tôt possible pour connaître et contrôler son état.
+                                        <br>Cherche un bon régime alimentaire qui coïncide avec son âge et avec son niveau d'activité.
+                                    </div>
+                                    <div id="divDescr2" class="row-fluid span10" style="text-align: justify;font-size: larger;" hidden>
+
+                                        <br><br>
+                                        Félicitations ! Votre {% if HWEntity.getTypeAnimal() == 1  %}<b> Chat </b> {% else %} <b>Chien</b>  {% endif %}
+                                        fait partie des 46% des {% if HWEntity.getTypeAnimal() == 1  %}  <b> Chats </b> {% else %} <b>Chiens</b>  {% endif %} non obèses.
+                                        <br>Le score des conditions du corps de {{ HWEntity.getNomAnimal() }} est 5,
+                                        c'est à dire que le poids de votre {% if HWEntity.getTypeAnimal() == 1  %}  <b> Chat </b> {% else %} <b>Chien</b>  {% endif %}  est idéal puisqu'il est entre 23.8 à 26.3 pounds,
+                                        mais on vous conseille de consulter votre vétérinaire pour la simple confirmation, basée sur un ensemble d'examination
+                                        du niveau des activités de votre {% if HWEntity.getTypeAnimal() == 1  %}  <b> Chat </b> {% else %} <b>Chien</b>  {% endif %} .
+                                        <br>
+                                        Vous faites alors un bon travail avec {{ HWEntity.getNomAnimal() }}.
+                                        <br>Prenez attention de lui et son poids restera bien stabilisé. Voici quelques conseils à suivre pour son bien être:<br>
+                                        Rappel: un nombre régulier des exercices 2- 3 fois par jour sera parfait pour maintenir un corps idéal et n'oublier pas
+                                        de bien mesurer les portions de ses aliments pour qu'il ne gagne pas du poids.
+                                    </div>
+                                    <div id="divDescr3" class="row-fluid span10" style="text-align: justify;font-size: larger;" hidden>
+                                        <br><br>
+                                        Ne vous inquiétez pas pour {{ HWEntity.getNomAnimal() }} on est bien ici pour vous aider !<br>
+                                        Basé sur nos études, le score des conditions du corps de {{ HWEntity.getNomAnimal() }} est superieur à 5,
+                                        c'est à dire que {{ HWEntity.getNomAnimal() }} a atteint approximativement 11% d'obésité et son poids idéal
+                                        est entre 42.5 et 46.3 pounds, mais on vous conseille de consulter votre vétérinaire pour la simple confirmation,
+                                        basée sur un ensemble d'examination du niveau des activités de votre {% if HWEntity.getTypeAnimal() == 1  %}  <b> Chat </b> {% else %} <b>Chien</b>  {% endif %} .
+                                        <br>Être obèse met votre {% if HWEntity.getTypeAnimal() == 1  %}  <b> Chat </b> {% else %} <b>Chien</b>  {% endif %}  devant beaucoup de problèmes tel que les problèmes respiratoires.
+                                        <br>Voici quelques conseils à suivre pour son bien être:
+                                        <br>Essayer de diminuer les portions de 10% par semaine jusqu'à ce que vous atteindrez le nombres de calories souhaités.
+                                        <br>Soyez attentif les aliments peuvent être trop caloriques. Et utiliser les carottes et les haricots verts avec modération.
+                                        Pour plus d'idée concernant le poids de votre {% if HWEntity.getTypeAnimal() == 1  %}  <b> Chat </b> {% else %} <b>Chien</b>  {% endif %}  en ligne seront disponible ici.
+                                    </div>
+
+
+                                <!--</form>-->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script type="application/javascript">
+
+    function showResult() {
+
+        var radioscote = document.getElementsByName('cote');
+        for (var i = 0, length = radioscote.length; i < length; i++)
+        {
+            if (radioscote[i].checked)
+            {
+                var cote = radioscote[i].value ;
+                break;
+            }
+        }
+        var radiospoid = document.getElementsByName('poid');
+        for (var i = 0, length = radiospoid.length; i < length; i++)
+        {
+            if (radiospoid[i].checked)
+            {
+                var poid = radiospoid[i].value ;
+                break;
+            }
+        }
+        var radiosabdo = document.getElementsByName('abdo');
+        for (var i = 0, length = radiosabdo.length; i < length; i++)
+        {
+            if (radiosabdo[i].checked)
+            {
+                var  abdo  = radiosabdo[i].value ;
+                break;
+            }
+        }
+        document.getElementsByName('hiddenAbdo').value = abdo;
+        document.getElementsByName('hiddenCote').value= cote;
+        document.getElementsByName('hiddenPoid').value= poid;
+
+        if(abdo == 1 )
+            $("#repAbdo").html("<span class=\"badge badge-important\">1</span><b> Abdominoplastie prononcée  </b> ");
+        else if(abdo==2)
+            $("#repAbdo").html(" <span class=\"badge badge-warning\">2</span><b>   Abdominoplastie proportionnelle  </b> ");
+        else if(abdo == 3)
+            $("#repAbdo").html(" <span class=\"badge badge-success\">3</span> <b>Abdominoplastie absente </b> ");
+
+        if(cote == 1 )
+            $("#repCote").html("<span class=\"badge badge-important\">1</span><b> Ils sont trop importants </b> ");
+        if(cote == 2 )
+            $("#repCote").html(" <span class=\"badge badge-warning\">2</span><b> Ils sont juste  </b> ");
+        if(cote == 3 )
+            $("#repCote").html(" <span class=\"badge badge-success\">3</span> <b> Ils ne sont pas détectables </b> ");
+
+        if(poid == 1 )
+            $("#repPoid").html("<span class=\"badge badge-important\">1</span><b> Forme de sablier proéminent  </b> ");
+        if(poid == 2 )
+            $("#repPoid").html(" <span class=\"badge badge-warning\">2</span><b> Bien proportionné   </b> ");
+        if(poid == 3 )
+            $("#repPoid").html(" <span class=\"badge badge-success\">3</span> <b> Non visible </b> ");
+
+        calculerIndiceHW(abdo, cote, poid);
+
+        $('#div_questions').hide();
+        $('#div_resultat').show();
+        ReactDOM.findDOMNode(this).scrollTop = 0;
+        return false;
+    }
+    function  calculerIndiceHW(abdo, cote, poid){
+
+        var indice= parseInt(cote)+ parseInt(abdo) + parseInt(poid);
+        var typeAnimal = {{ HWEntity.getTypeAnimal() }};
+
+        if(cote == 2 && abdo == 2 && poid == 2){// parfait
+            if(typeAnimal == 1){
+                $("#imgAnimal").attr("src","{{ asset('img/cat/cat_bcs_5.jpg') }}");
+            }
+            else{
+                $("#imgAnimal").attr("src","{{ asset('img/dog/dog_bcs_5.jpg') }}");
+            }
+            $("#imgScale").attr("src","{{ asset('img/scale/scale_5.png') }}");
+            $("#imgResultScale").attr("src","{{ asset('img/scale/result_5.png') }}");
+
+
+            document.getElementById("spanHW").innerHTML = "<h4> Idéal </h4>";
+
+
+
+            $('#divDescr3').hide();
+            $('#divDescr2').show();
+            $('#divDescr1').hide();
+        }
+        else
+        if(cote == 1 && abdo == 1 && poid == 1){//animal tres maigre
+            if(typeAnimal == 1){
+                $("#imgAnimal").attr("src","{{ asset('img/cat/cat_bcs_1.jpg') }}");
+            }
+            else{
+                $("#imgAnimal").attr("src","{{ asset('img/dog/dog_bcs_1.jpg') }}");
+            }
+            document.getElementById("spanHW").innerHTML = "<h4> Trés maigre  </h4>";
+            $("#imgScale").attr("src","{{ asset('img/scale/scale_1.png') }}");
+            $("#imgResultScale").attr("src","{{ asset('img/scale/result_1.png') }}");
+            $('#divDescr3').hide();
+            $('#divDescr1').show();
+            $('#divDescr2').hide();
+        }
+        else if(indice == 9){ // tres obese
+            if(typeAnimal == 1){
+                $("#imgAnimal").attr("src","{{ asset('img/cat/cat_bcs_9.jpg') }}");
+            }
+            else{
+                $("#imgAnimal").attr("src","{{ asset('img/dog/dog_bcs_9.jpg') }}");
+            }
+            document.getElementById("spanHW").innerHTML = "<h4> Trés obèse </h4>";
+
+            $("#imgScale").attr("src","{{ asset('img/scale/scale_9.png') }}");
+            $("#imgResultScale").attr("src","{{ asset('img/scale/result_9.png') }}");
+            $('#divDescr1').hide();
+            $('#divDescr3').show();
+            $('#divDescr2').hide();
+
+        }
+        else if(indice > 3 && indice < 6){// animal maigre
+            if(typeAnimal == 1){
+                $("#imgAnimal").attr("src","{{ asset('img/cat/cat_bcs_3.jpg') }}");
+            }
+            else{
+                $("#imgAnimal").attr("src","{{ asset('img/dog/dog_bcs_3.jpg') }}");
+            }
+            document.getElementById("spanHW").innerHTML = "<h4> Maigre </h4>";
+            $("#imgScale").attr("src","{{ asset('img/scale/scale_4.png') }}");
+            $("#imgResultScale").attr("src","{{ asset('img/scale/result_3.png') }}");
+            $('#divDescr3').hide();
+            $('#divDescr1').show();
+            $('#divDescr2').hide();
+        }
+        else if(indice > 6 && indice < 9){// surpoid
+            if(typeAnimal == 1){
+                $("#imgAnimal").attr("src","{{ asset('img/cat/cat_bcs_7.jpg') }}");
+            }
+            else{
+                $("#imgAnimal").attr("src","{{ asset('img/dog/dog_bcs_7.jpg') }}");
+            }
+            document.getElementById("spanHW").innerHTML = "<h4> Surpoid </h4>";
+            $("#imgScale").attr("src","{{ asset('img/scale/scale_7.png') }}");
+            $("#imgResultScale").attr("src","{{ asset('img/scale/result_7.png') }}");
+            $('#divDescr1').hide();
+            $('#divDescr3').show();
+            $('#divDescr2').hide();
+        }
+
+    }
+</script>
+<style>
+    .badge-warning{
+        background-color: #f89406;
+    }
+    .badge-success{
+        background-color: #468847;
+    }
+</style>
+    <!-- SLIDESHOW SECTION END-->
+    <div class="below-slideshow">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="txt-block">
+
+
+                        <i class="fa fa-lastfm fa-4x"></i>
+                        <h4> </h4>
+                        <p >
+
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="txt-block">
+
+
+                        <i class="fa fa-yelp fa-4x"></i>
+                        <h4>Free To Download</h4>
+                        <p >
+
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="txt-block">
+
+
+                        <i class="fa fa-ioxhost fa-4x"></i>
+                        <h4> </h4>
+                        <p >
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- BELOW SLIDESHOW SECTION END-->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <hr />
+            </div>
+        </div>
+    </div>
+    <!-- TAG HOME SECTION END-->
+{% endblock %}
+
+</body>
+</html>

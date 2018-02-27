@@ -1,0 +1,6 @@
+services:
+    acme.js_vars:
+        class: stdClass
+#    zanimaux.example:
+#        class: ZanimauxBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

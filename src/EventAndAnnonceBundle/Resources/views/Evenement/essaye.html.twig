@@ -1,0 +1,52 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<link href="{{ asset('css/essaye.css') }}" rel="stylesheet">
+
+
+
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <div class="row">
+        <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+            <ul class="event-list">
+                <a class="right" href="{{ path('add_e') }}"><span class="fa fa-plus-square"></span></a>
+                {% for evenement in evenements %}
+                    <li>
+
+                        <img alt="Event Picture" src="{{ asset(evenement.imageEvt) }}" />
+                        <div class="info">
+                            <h2 class="title">{{ evenement.titre }}</h2>
+                            <p class="desc">{{ evenement.description }}</p>
+                            <h5 class="lieu" align="left">{{ evenement.lieu }}</h5>
+
+                            <ul>
+
+                                <li style="width:34%;"><a href="{{ path('detailEvent',{ "idEvt": evenement.idEvt })}}"><span class="fa fa-info"></span></a></li>
+
+                            </ul>
+                        </div>
+                        {% if  evenement.cin == user.id  %}
+                            <a href="{{ path("update_e",{ "idEvt":evenement.idEvt})}}"><span class="fa fa-edit"></span></a>
+                            <a href="{{ path("delete_e",{ "idEvt": evenement.idEvt })}}"><span class="fa fa-eraser"></span></a>
+                        {% endif %}
+
+
+                        <div class="social">
+                            <ul>
+                                <li class="facebook" style="width:33%;"><a href="#facebook"><span class="fa fa-facebook"></span></a></li>
+                                <li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li>
+                                <li class="google-plus" style="width:33%;"><a href="#google-plus"><span class="fa fa-google-plus"></span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+
+                {% endfor %}
+
+
+            </ul>
+        </div>
+    </div>
+</div>

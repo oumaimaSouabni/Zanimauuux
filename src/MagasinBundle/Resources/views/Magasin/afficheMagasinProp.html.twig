@@ -1,0 +1,60 @@
+{% extends "@Magasin/Produit/gallery.html.twig" %}
+
+{% block esm_li_melfou9_belkol %}
+    <div id="breadcrumb"> <a href="{{ path('afficheMagasinProp') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{{ path('afficheMagasinProp') }}">Gestion des magasins</a>  </div>
+    <h1>Gestion des magasins</h1>
+    </div>
+{% endblock %}
+
+            {% block esm_li_melfou9 %}
+
+                <div class="span12">
+
+                    <div class="widget-box">
+                        <div class="widget-title"> <span class="icon"> <i class="icon-picture"></i> </span>
+                            <h5>Mes Magasins</h5>
+                        </div>
+                        {% block tsawer_kol %}
+
+                        <div class="widget-content nopadding">
+
+                            <table  class="recent-posts">
+                                {% for magasin in magasins %}
+
+
+                                    <tr >
+                                        <td height="150" width="180">  <img width="174.217" height="130.667" alt="User" src="{{asset('img/portfolio/'~ magasin.photoMagasin )}}"> </td>
+                                        <div class="article-post">
+
+                                            <td width="400"> <span class="user-info">
+                                                  <b>numRC:</b>  {{ magasin.numRC }}<br>
+                                                         <b>Nom du magasin:</b> {{ magasin.nomMagasin }}<br>
+                                                         <b>Adresse du magasin :</b>   {{ magasin.adresseMagasin }}, {{ magasin.villeMagasin }}<br>
+                                                          <b>Nombre Produit:</b> {{ magasin.nbProduit }}<br>
+                                                       </span>
+                                            </td>
+                                            <td>
+                                                <div class="fr"><a href="{{ path('modifMagasinProp',{'idMagasin':magasin.idMagasin}) }}" class="btn btn-primary btn-mini" >Modifier Magasin</a>
+                                                <a href="{{ path('suppMagasinProp',{'idMagasin':magasin.idMagasin}) }}" class="btn btn-danger btn-mini" >Supprimer Magasin</a>
+                                                </div>
+                                            </td>
+
+                                        </div>
+                                    </tr>
+
+
+                                {% endfor %}
+                            </table>
+
+                            <a href="{{ path('affiche_m') }}"><button  class="btn btn-warning btn-mini" >Visualiser Les magasins en tant que client</button></a>
+
+                        </div>
+                    </div>
+
+
+
+                    {% endblock %}
+                </div>
+                </div>
+            {% endblock %}
+

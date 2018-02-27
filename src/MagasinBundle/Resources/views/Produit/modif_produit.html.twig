@@ -1,0 +1,52 @@
+{% extends "@Zanimaux/Produit/gere_pr.html.twig" %}
+{% block esm_li_melfou9 %}
+
+        <!--breadcrumbs-->
+        <div class="widget-box">
+            <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+                <h5>Formulaire Magasin</h5>
+            </div>
+            <div class="widget-content nopadding" >
+                <form action="#" method="POST" class="form-horizontal" >
+                    <div class="control-group" class="cadre">
+                        <label class="control-label">Libelle:</label>
+                        <div class="controls">
+                            <input type="text" class="span11" class="input" placeholder="libelle produit" name="libelle" value="{{ produit.libelle }}" />
+                        </div>
+                    </div>
+                    <div class="control-group" class="cadre">
+                        <label class="control-label">marque:</label>
+                        <div class="controls">
+                            <input type="text" class="span11" class="input" placeholder="modifier la marque du produit" name="marque" value="{{ produit.marque }}"/>
+                        </div>
+                    </div>
+                    <div class="control-group" class="cadre">
+                        <label class="control-label">Prix Produit: </label>
+                        <div class="controls">
+                            <input type="float" class="span11" class="input" placeholder="modifier le prix du produit" name="prix" value="{{ produit.prix }}" />
+                        </div>
+                    </div>
+                    <div class="control-group" class="cadre">
+                        <label class="control-label">Quantité Produit: </label>
+                        <div class="controls">
+                            <input type="number" class="span11" class="input" placeholder="modifier la quantité du produit" name="quantité" value="{{ produit.quantite }}"  />
+                        </div>
+                    </div>
+
+                    <div class="control-group" class="cadre">
+                        <label class="control-label">Image Produit:</label>
+                        <div class="controls">
+                            <input type="file" name="photoProduit" value="{{ produit.photoProduit }}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" value="submit" class="btn btn-success">Modifier</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+{% endblock %}

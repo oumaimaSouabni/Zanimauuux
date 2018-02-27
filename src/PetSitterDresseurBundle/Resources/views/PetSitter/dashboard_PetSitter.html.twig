@@ -1,0 +1,72 @@
+{% extends "ZanimauxBundle:User:dashboard.html.twig" %}
+
+{% block head %}
+    {{ parent() }}
+        <title>Dashboard Dresseur</title>
+{% endblock %}
+
+    {% block bar_laterale %}
+        <div id="sidebar"><a href="{{ path('loginadmin') }}" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+            <ul>
+                <li class="active"><a href=""><i class="icon icon-home"></i> <span>Mes promenades</span></a> </li>
+                <li> <a href="{{ path('creerpromenade') }}"><i class="icon icon-signal"></i> <span>Créer promenade</span></a> </li>
+                <li> <a href=""><i class="icon icon-inbox"></i> <span>Profile</span></a> </li>
+            </ul>
+        </div>
+    {% endblock %}
+        {% block contenu %}
+            <div id="content">
+            <!--breadcrumbs-->
+            <div id="content-header">
+                <div id="breadcrumb"> <a href="{{ path('loginadmin') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+            </div>
+            <center>
+                <form action="{{ path('recherche_Promenade_DQL') }}?chose=" class="form-horizontal group-border-dashed" novalidate="">
+                    <div class="form-group">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <input placeholder="Recherche" name="chose" class="form-control" type="text">
+                        </div>
+                    </div>
+                </form>
+            </center>
+                {% block tsawer_kol %}
+
+
+                <div class="widget-content nopadding">
+
+
+                    <table  class="recent-posts">
+                        {% for promenades in Promenade %}
+                            <tr>
+                                <td height="150" width="180">  <img width="174.217" height="130.667" alt="User" src="{{asset('refuges/')}}"> </td>
+                                <div class="article-post">
+
+                                    <td width="400"> <span class="user-info">
+                                                  <b>Nom:</b>  {{ promenades.nomPromenade }}<br>
+                                                         <b>Lieu:</b> {{ promenades.lieuPromenade }}<br>
+                                                         <b>Type:</b>  {{ promenades.typePromenade }} <br>
+                                                          <b>Description:</b> {{ promenades.descriptionPromenade }}<br>
+                                                         <b> Date debut: </b>{{ promenades.datedebutPromenade }}<br>
+                                                        <b> Date fin: </b>{{ promenades.datefinPromenade }}<br>
+                                                       </span>
+                                    </td>
+                                    <td> <div class="fr"><a href="{{ path('editpromenade',{'id':promenades.id }) }}" class="btn btn-primary btn-mini" >Edit</a>
+                                            <a href="{{ path('deletepromenade',{'id':promenades.id }) }}" class="btn btn-danger btn-mini" >Delete</a>
+                                        </div>
+                                    </td>
+
+                                </div>
+                            </tr>
+
+
+                        {% endfor %}
+                    </table>
+
+
+                </div>
+            </div>
+{% endblock %}
+        </div>
+    {% endblock %}
+

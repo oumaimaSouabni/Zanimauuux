@@ -1,0 +1,94 @@
+{% extends "@Zanimaux/User/Layout2.html.twig" %}
+
+{% block head %}
+    {{ parent() }}
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="{{ asset('css/commande.css') }}" rel="stylesheet" />
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+{% endblock %}
+{% block contenu %}
+    <div class="below-slideshow">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="txt-block">
+                        <h1 class="head-line">Mes commandes</h1>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<div class="container" >
+    <div
+            id="js-vars"
+            data-vars="{{ js_vars|json_encode|e('html_attr') }}"></div>
+    {% for c in cPanier %}
+
+    <div class="row">
+        <div class="row" style="margin-top: 100px">
+            <div class="col-xs-12 col-sm-3 col-md-3"  style="width: 200px; height: 20px">
+                <a href="#">
+                    <img src="{{asset('img/produit/'~c.IdProduit.photoProduit )}}"  class="img-responsive img-box img-thumbnail">
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-9 col-md-9">
+                <div class="list-group">
+                    <div class="list-group-item">
+                        <div class="row-picture">
+                            <a href="#" title="{{ c.IdProduit.IdMagasin.NomMagasin }}">
+                                <img class="circle img-thumbnail img-box" src="{{asset('img/portfolio/'~ c.IdProduit.IdMagasin.PhotoMagasin )}}" alt="sintret">
+                            </a>
+                        </div>
+                        <div class="row-content">
+                            <div class="list-group-item-heading">
+                                <a href="#" title="sintret">
+                                    <small>{{ c.IdProduit.IdMagasin.NomMagasin }}</small>
+                                </a>
+                            </div>
+                            <small>
+                                {% set jour = c.dateCommande | date('d')%}
+                                {% set jour1="now"| date('d') %}
+                                {% set test= jour1-jour %}
+
+
+                                <p>{{ test}}</p>
+                                <i class="glyphicon glyphicon-time"></i>{{ c.dateCommande|date('d M Y ') }} <br>
+                                <span class="explore"><i class="glyphicon glyphicon-th"></i> <a href="#">Explore 2 places </a></span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <h4><a href="#">{{ c.IdProduit.Libelle }}</a></h4>
+                <p>{{ c.IdProduit.description }}</p>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+
+</div>
+    <div style="margin-top: 100px">
+        <button class="btn btn-primary btn-sm"  onclick="myFunction()">Anuuler Commande</button>
+
+    </div>
+    <script>
+        function myFunction() {
+            var JsVars = jQuery('#js-vars').data('vars');
+            var chartData = JsVars.chartData;
+            console.log(chartData);
+            var test=$(this).attr("data-date");
+            if (chartData<=3){
+                window.location = '{{ path('suppCommande') }}';
+            }
+            else{
+                alert("vous avez dépassé 3 jours, vous ne pouvez pas annuler la commande");
+            }
+        }
+    </script>
+{% endblock %}

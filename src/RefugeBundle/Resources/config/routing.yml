@@ -1,0 +1,74 @@
+refuge_homepage:
+    path:     /
+    defaults: { _controller: RefugeBundle:Default:index }
+proprietaire_refuge:
+    path:     /refuge
+    defaults: { _controller: ZanimauxBundle:User:admingerer}
+
+questionnaire_chat:
+    path:     /questionnaireChat
+    defaults: { _controller: RefugeBundle:Refuge:questionnaireChat }
+questionnaire_chien:
+    path:     /questionnaireChient
+    defaults: { _controller: RefugeBundle:Refuge:questionnaireChien }
+questionnaire_chat_internaute:
+    path:     /questionnaireChatInternaute
+    defaults: { _controller: RefugeBundle:Refuge:questionnaireChatInternaute }
+questionnaire_chien_Internaute:
+    path:     /questionnaireChientInternaute
+    defaults: { _controller: RefugeBundle:Refuge:questionnaireChienInternaute }
+
+afficher_refuge_internaute:
+    path:     /AfficherRefugeInternaute
+    defaults: { _controller: RefugeBundle:Refuge:AfficherRefugeInternaute }
+
+afficher_refuge:
+    path:     /AfficherRefuge
+    defaults: { _controller: RefugeBundle:Refuge:AfficherRefuge }
+
+ajouter_refuge:
+    path:     /AjouterRefuge
+    defaults: { _controller: RefugeBundle:Refuge:AjouterRefuge }
+
+ajouter_animal:
+    path:     /AjouterAnimal
+    defaults: { _controller: RefugeBundle:Animaux:AjouterAnimal }
+
+afficher_animaux:
+    path:     /AfficherAnimaux
+    defaults: { _controller: RefugeBundle:Animaux:AfficherAnimaux }
+delete_animaux:
+    path:     /deletAnimaux/{idAnimal}
+    defaults: { _controller: RefugeBundle:Animaux:deleteAnimal }
+supprimer_commentaire:
+    path:     /supprimerCommentaire/{id}
+    defaults: { _controller: RefugeBundle:Animaux:supprimerCommentaire }
+update_animaux:
+    path:     /updateAnimaux/{idAnimal}
+    defaults: { _controller: RefugeBundle:Animaux:updateAnimal }
+affiche_animaux_Internaute:
+    path:     /afficheAnimauxInternaute/{immatriculation}
+    defaults: { _controller: RefugeBundle:Animaux:afficheAnimalPourInternaute }
+affiche_animaux_client:
+    path:     /afficheAnimauxClient/{immatriculation}
+    defaults: { _controller: RefugeBundle:Animaux:afficheAnimalPourClient }
+afficher_refuge_dashboard:
+    path:     /AfficherRefugeDashboard/
+    defaults: { _controller: RefugeBundle:Refuge:AfficherRefugeDashboard }
+delete_refuge:
+    path:     /deleteRefuge/{immatriculation}
+    defaults: { _controller: RefugeBundle:Refuge:deleteRefuge}
+modifier_refuge:
+    path:     /modifierRefuge/{immatriculation}
+    defaults: { _controller: RefugeBundle:Refuge:modifierRefuge }
+refuge_plus_proche:
+    path:     /refugePlusProche
+    defaults: { _controller: RefugeBundle:Refuge:recherchePlusProche }
+
+adress_map:
+    path:     /adressMap/{immatriculation}
+    defaults: { _controller: RefugeBundle:Refuge:index }
+modifier_commentaire_client:
+    path:     /ModifierCommentaire/{id}
+    defaults: { _controller: RefugeBundle:Animaux:modifierCommentaire }
+

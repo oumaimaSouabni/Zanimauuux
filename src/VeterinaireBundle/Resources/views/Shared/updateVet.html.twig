@@ -1,0 +1,122 @@
+{% extends "ZanimauxBundle:User:dashboard_vet.html.twig" %}
+
+
+{% block head %}
+
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('adminpage/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/colorpicker.css')}}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/datepicker.css')}}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/uniform.css')}}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/select2.css')}}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/bootstrap-wysihtml5.css')}}" />
+    <link href="{{ asset('adminpage/font-awesome/css/font-awesome.css')}}" rel="stylesheet" />
+    <link href="{{ asset('adminpage/css/formulaire.css')}}" rel="stylesheet" />
+
+{% endblock %}
+{% block bar_laterale %}
+
+    <div id="sidebar"><a href="{{ path('loginadmin') }}" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+        <ul class="nav">
+            <li ><a href="{{ path('affiche') }}"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
+            <li class="active"> <a href=""><i class="icon icon-signal"></i> <span>Modifier Profil</span></a> </li>
+            <li> <a href="{{ path('afficherArticlesBack')}}"><i class="icon icon-inbox"></i> <span>Affiche Articles</span></a> </li>
+            <li> <a href="{{ path('addCabinet')}}"><i class="icon icon-inbox"></i> <span>Ajouter Cabinet</span></a> </li>
+
+        </ul>
+    </div>
+{% endblock %}
+ {% block contenu %}
+
+     <div id="content">
+         <!--breadcrumbs-->
+         <div id="content-header">
+             <div id="breadcrumb"> <a href="{{ path('loginadmin') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+         </div>
+         <div class="widget-box">
+             <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+                 <h5>Personnalisation de votre Profil</h5>
+             </div>
+             <div class="widget-content nopadding" >
+                 <form action="#" method="POST" class="form-horizontal" >
+                     <div class="control-group" id="cadre">
+                         <label class="control-label">Email :</label>
+                         <div class="controls">
+                             <input type="text" class="span11" id="input" placeholder="Email de votre cabinet" name="email"/>
+                         </div>
+                     </div>
+                     <div class="control-group" id="cadre">
+                         <label class="control-label">Telephone :</label>
+                         <div class="controls">
+                             <input type="text" class="span11" id="input" placeholder="Telephone " name="telephone"/>
+                         </div>
+                     </div>
+                     <div class="control-group" id="cadre">
+                         <label class="control-label">Nom :</label>
+                         <div class="controls">
+                             <input type="text" class="span11" id="input" placeholder="Fax " name="nom"/>
+                         </div>
+                     </div>
+                     <div class="control-group" id="cadre">
+                         <label class="control-label">Prenom :</label>
+                         <div class="controls">
+                             <input type="text" class="span11" id="input" placeholder="Fax " name="prenom"/>
+                         </div>
+                     </div>
+                     <div class="control-group" id="cadre">
+                         <label class="control-label">Adresse :</label>
+                         <div class="controls">
+                             <input type="text" class="span11" id="input" placeholder="Adresse " name="adresse"/>
+                         </div>
+                     </div>
+                     <div class="control-group" id="cadre">
+                         <label class="control-label">Ville :</label>
+                         <div class="controls">
+                             <input type="text" class="span11" id="input" placeholder="Ville " name="ville"/>
+                         </div>
+                     </div>
+                     <div class="control-group" id="cadre">
+                         <label class="control-label">CodePostale :</label>
+                         <div class="controls">
+                             <input type="text" class="span11" id="input" placeholder="Code Postale " name="codePostale"/>
+                         </div>
+                     </div>
+                     <div class="control-group" id="cadre">
+                         <label class="control-label">Numero d'ordre :</label>
+                         <div class="controls">
+                             <input type="text" class="span11" id="input" placeholder="Code Postale " name="numeroOrdre"/>
+                         </div>
+                     </div>
+
+
+                     <div class="form-actions">
+                         <button type="submit" value="submit" class="btn btn-success">Save</button>
+                     </div>
+                 </form>
+             </div>
+
+         </div>
+     </div>
+ {%endblock%}
+
+{% block script %}
+
+    <script src="{{ asset('js/jquery.min.js')}}"></script>
+    <script src="{{ asset('js/jquery.ui.custom.js')}}"></script>
+    <script src="{{ asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('js/bootstrap-colorpicker.js')}}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.js')}}"></script>
+    <script src="{{ asset('js/jquery.toggle.buttons.js')}}"></script>
+    <script src="{{ asset('js/masked.js')}}"></script>
+    <script src="{{ asset('js/jquery.uniform.js')}}"></script>
+    <script src="{{ asset('js/select2.min.js')}}"></script>
+    <script src="{{ asset('js/matrix.js')}}"></script>
+    <script src="{{ asset('js/matrix.form_common.js')}}"></script>
+    <script src="{{ asset('js/wysihtml5-0.3.0.js')}}"></script>
+    <script src="{{ asset('js/jquery.peity.min.js')}}"></script>
+    <script src="{{ asset('js/bootstrap-wysihtml5.js')}}"></script>
+    <script>
+        $('.textarea_editor').wysihtml5();
+    </script>
+{% endblock %}
+

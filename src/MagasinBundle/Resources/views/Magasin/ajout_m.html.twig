@@ -1,0 +1,81 @@
+{% extends "@Magasin/Produit/gallery.html.twig" %}
+
+{% block bar_laterale %}
+    <div id="sidebar"><a href="{{ path('proprietaire_refuge') }}" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+        <ul>
+            <li ><a href="{{path('afficheMagasinProp') }}"><i class="icon icon-home"></i> <span>Mes Magasins</span></a> </li>
+            <li class="active"> <a href="{{ path('ajout_m')}}"><i class="icon icon-signal"></i> <span>Ajout Magasin</span></a> </li>
+            <li> <a href="{{ path('affichePrduit_mDash')}}"><i class="icon icon-inbox"></i> <span>Gestion Produits</span></a> </li>
+            <li><a href="{{ asset('adminpage/tables.html') }}"><i class="icon icon-th"></i> <span>Gestion Clients</span></a></li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block esm_li_melfou9_belkol %}
+    <div id="breadcrumb"> <a href="{{ path('afficheMagasinProp') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{{ path('ajout_m') }}">Ajout Magasin</a>  </div>
+    <h1>Ajout Magasin</h1>
+    </div>
+{% endblock %}
+{% block container_fluid %}
+                    {% block esm_li_melfou9 %}
+                        {% block tsawer_kol %}
+
+                            <div class="span12">
+                                <!--breadcrumbs-->
+
+                                <div class="widget-box" >
+                                    <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+                                        <h5>Formulaire Magasin</h5>
+                                    </div>
+                                    <div class="widget-content nopadding" >
+                                        <form action="#" method="POST" class="form-horizontal" >
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">Numero RC:</label>
+                                                <div class="controls">
+                                                    <input type="text" class="span11" class="input" placeholder="numéro de registre de commerce de votre magasin" name="numRC" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">Nom magasin:</label>
+                                                <div class="controls">
+                                                    <input type="text" class="span11" class="input" placeholder="nom de votre magasin" name="nomMagasin"/>
+                                                </div>
+                                            </div>
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">Adresse Magasin: </label>
+                                                <div class="controls">
+                                                    <input type="text"  class="span11" class="input"  placeholder="l'adresse de votre magasin" name="adresseMagasin" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">Ville:</label>
+                                                <div class="controls">
+                                                    <input type="text" class="span11" class="input" name="villeMagasin" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">Code Postale: </label>
+                                                <div class="controls">
+                                                    <input type="number" class="span11" class="input" name="codePostaleMagasin"  />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">Image Magasin:</label>
+                                                <div class="controls">
+                                                    <input type="file" name="photoMagasin"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-actions">
+                                                <button type="submit" value="submit" class="btn btn-success">Ajouter</button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        {% endblock %}
+                    {% endblock %}
+
+                {% endblock %}
+
+

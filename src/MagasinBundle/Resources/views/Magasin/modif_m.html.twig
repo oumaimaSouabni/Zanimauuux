@@ -1,0 +1,64 @@
+{% extends '@Zanimaux/Produit/gallery.html.twig' %}
+
+{% block esm_li_melfou9_belkol %}
+
+{% endblock %}
+
+
+                {% block container_fluid %}
+                    {% block esm_li_melfou9 %}
+                        {% block tsawer_kol %}
+
+                            <div class="span12">
+                                <!--breadcrumbs-->
+
+                                <div class="widget-box" >
+                                    <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+                                        <h5>Modifier Informations Magasin</h5>
+                                    </div>
+                                    <div class="widget-content nopadding" >
+                                        <form action="#" method="POST" class="form-horizontal" >
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">Nom magasin:</label>
+                                                <div class="controls">
+                                                    <input type="text" class="span11" class="input" placeholder="nom de votre magasin" name="nomMagasin" value="{{ magasin.nomMagasin }}"/>
+                                                </div>
+                                            </div>
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">Adresse Magasin: </label>
+                                                <div class="controls">
+                                                    <input type="text"  class="span11" class="input"  placeholder="l'adresse de votre magasin" name="adresseMagasin" value="{{ magasin.adresseMagasin }}" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">Ville:</label>
+                                                <div class="controls">
+                                                    <input type="text" class="span11" class="input" name="villeMagasin" value="{{ magasin.villeMagasin }}" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">Code Postale: </label>
+                                                <div class="controls">
+                                                    <input type="number" class="span11" class="input" name="codePostaleMagasin" value="{{ magasin.codePostaleMagasin }}" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group" class="cadre">
+                                                <label class="control-label">Image Magasin:</label>
+                                                <div class="controls">
+                                                    <input type="file" name="photoMagasin"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-actions">
+                                                <button type="submit" value="submit" class="btn btn-success">Modifier</button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        {% endblock %}
+                    {% endblock %}
+
+                {% endblock %}
+
+

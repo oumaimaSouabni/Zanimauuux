@@ -1,0 +1,87 @@
+veterinaire_homepage:
+    path:     /
+    defaults: { _controller: VeterinaireBundle:Default:index }
+
+
+updateVet:
+    path:     /updateVet
+    defaults: { _controller: ZanimauxBundle:User:updateVet }
+
+deleteCabinet:
+    path:     /deleteCabinet/{immatriculecabinet}
+    defaults: { _controller: VeterinaireBundle:Cabinet:deleteCabinet }
+
+addCabinet:
+    path:     /addCabinet
+    defaults: { _controller: VeterinaireBundle:Cabinet:addCabinet }
+
+updateCabinet:
+    path:     /updateCabinet/{immatriculecabinet}
+    defaults: { _controller: VeterinaireBundle:Cabinet:updateCabinet }
+
+afficherCabinetsFront:
+    path:     /afficherCabinetsFront
+    defaults: { _controller: VeterinaireBundle:Cabinet:afficherCabinetsFront}
+
+afficheCabinetBack:
+    path:     /afficheCabinetBack
+    defaults: { _controller: VeterinaireBundle:Cabinet:afficheCabinetBack}
+
+InformationsCabinet:
+    path:     /InformationsCabinet/{immatriculecabinet}
+    defaults: { _controller: VeterinaireBundle:Cabinet:InformationsCabinet}
+
+updateArticle:
+    path:     /updateArticle/{id}
+    defaults: { _controller: VeterinaireBundle:Article:updateArticle }
+
+addArticle:
+    path:     /addArticle
+    defaults: { _controller: VeterinaireBundle:Article:addArticle }
+
+afficherArticlesFront:
+    path:     /afficherArticlesFront
+    defaults: { _controller: VeterinaireBundle:Article:afficherArticlesFront}
+
+afficherArticlesBack:
+    path:     /afficherArticlesBack
+    defaults: { _controller: VeterinaireBundle:Article:afficherArticlesBack}
+
+InformationsArticle:
+    path:     /InformationsArticle/{id}
+    defaults: { _controller: VeterinaireBundle:Article:InformationsArticle}
+
+deleteArticle:
+    path:     /deleteArticle/{id}
+    defaults: { _controller: VeterinaireBundle:Article:deleteArticle }
+
+
+notification:
+    path:     /notif/{notifiable}
+    defaults: { _controller: VeterinaireBundle:Default:List }
+
+ajouterDispo:
+    path:     /ajouterDispo
+    defaults: { _controller: VeterinaireBundle:Calendrier:ajouterDispo }
+
+afficheDispoDash:
+    path:     /afficheDispoDash
+    defaults: { _controller: VeterinaireBundle:Calendrier:afficheDispoDash}
+deleteDispo:
+    path:     /deleteDispo/{id}
+    defaults: { _controller: VeterinaireBundle:Calendrier:deleteDispo }
+indexHWCalculator:
+    path:     /index
+    defaults: { _controller: VeterinaireBundle:HWCalculator:index }
+
+validate:
+    path: /validate
+    defaults: {_controller:VeterinaireBundle:HWCalculator:validate }
+
+HWResult:
+    path: /HWResult
+    defaults: {_controller: VeterinaireBundle:HWCalculator:HWResult }
+
+HWResultFinal:
+    path: /HWResultFinal #/{cote}/{poid}.{abdo}
+    defaults: {_controller: VeterinaireBundle:HWCalculator:viewResult }

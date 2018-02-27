@@ -1,0 +1,337 @@
+
+{% extends "ZanimauxBundle:User:Layout2.html.twig" %}
+{% block title %}Quiz Chat{% endblock %}
+
+{% block menu %}
+    <section class="menu-section">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-12">
+
+                    <div class="navbar-collapse collapse ">
+                        <ul id="menu-top" class="nav navbar-nav navbar-right">
+                            <li><a href="{{ path('redirect') }}">Accueil</a></li>
+                            <li><a href="index.html">Veterinaire</a></li>
+                            <li><a href="{{ path('afficher_refuge') }}" class="menu-top-active">Refuge</a></li>
+                            <li><a href="{{ path('affiche_m') }}" >Magasin</a></li>
+                            <li><a href="contact.html">Dresseur & pet-sitter</a></li>
+                            <li><a href="features.html">Annonce</a></li>
+                            <li><a href="contact.html">evenement</a></li>
+                            <li><a href="{{ path('profile') }}" >Profil</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block contenu %}
+    <script type="text/javascript" src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>
+    <script>
+
+        $(function() {
+            $( "#modif" ).click(function() {
+                $( "#modif2" ).toggle();
+            });
+        });
+
+
+
+
+    </script>
+    <script>
+        $(function() {
+            $('#checkboxes1-0').click(function () {
+                $('#checkboxes1-1').prop('checked', false);
+                $('#checkboxes1-2').prop('checked', false);
+
+            });
+        });
+        $(function() {
+            $('#checkboxes1-1').click(function () {
+                $('#checkboxes1-0').prop('checked', false);
+                $('#checkboxes1-2').prop('checked', false);
+
+            });
+        });
+        $(function() {
+            $('#checkboxes1-2').click(function () {
+                $('#checkboxes1-0').prop('checked', false);
+                $('#checkboxes1-1').prop('checked', false);
+
+            });
+        });
+        $(function() {
+            $('#checkboxes2-0').click(function () {
+                $('#checkboxes2-1').prop('checked', false);
+                $('#checkboxes2-2').prop('checked', false);
+
+            });
+        });
+        $(function() {
+            $('#checkboxes2-1').click(function () {
+                $('#checkboxes2-0').prop('checked', false);
+                $('#checkboxes2-2').prop('checked', false);
+
+            });
+        });
+        $(function() {
+            $('#checkboxes2-2').click(function () {
+                $('#checkboxes2-0').prop('checked', false);
+                $('#checkboxes2-1').prop('checked', false);
+
+            });
+        });
+        $(function() {
+            $('#checkboxes3-0').click(function () {
+                $('#checkboxes3-1').prop('checked', false);
+                $('#checkboxes3-2').prop('checked', false);
+
+            });
+        });
+        $(function() {
+            $('#checkboxes3-1').click(function () {
+                $('#checkboxes3-0').prop('checked', false);
+                $('#checkboxes3-2').prop('checked', false);
+
+            });
+        });
+        $(function() {
+            $('#checkboxes3-2').click(function () {
+                $('#checkboxes3-0').prop('checked', false);
+                $('#checkboxes3-1').prop('checked', false);
+
+            });
+        });
+        $(function() {
+            $('#checkboxes4-0').click(function () {
+                $('#checkboxes4-1').prop('checked', false);
+                $('#checkboxes4-2').prop('checked', false);
+
+            });
+        });
+        $(function() {
+            $('#checkboxes4-1').click(function () {
+                $('#checkboxes4-0').prop('checked', false);
+                $('#checkboxes4-2').prop('checked', false);
+
+            });
+        });
+        $(function() {
+            $('#checkboxes4-2').click(function () {
+                $('#checkboxes4-0').prop('checked', false);
+                $('#checkboxes4-1').prop('checked', false);
+
+            });
+        });
+        $(function() {
+            $('#checkboxes5-0').click(function () {
+                $('#checkboxes5-1').prop('checked', false);
+                $('#checkboxes5-2').prop('checked', false);
+
+            });
+        });
+        $(function() {
+            $('#checkboxes5-1').click(function () {
+                $('#checkboxes5-0').prop('checked', false);
+                $('#checkboxes5-2').prop('checked', false);
+
+            });
+        });
+        $(function() {
+            $('#checkboxes5-2').click(function () {
+                $('#checkboxes5-0').prop('checked', false);
+                $('#checkboxes5-1').prop('checked', false);
+
+            });
+        });
+        $(function() {
+            $('#checkboxes6-0').click(function () {
+                $('#checkboxes6-1').prop('checked', false);
+                $('#checkboxes6-2').prop('checked', false);
+
+            });
+        });
+        $(function() {
+            $('#checkboxes6-1').click(function () {
+                $('#checkboxes6-0').prop('checked', false);
+                $('#checkboxes6-2').prop('checked', false);
+
+            });
+        });
+        $(function() {
+            $('#checkboxes6-2').click(function () {
+                $('#checkboxes6-0').prop('checked', false);
+                $('#checkboxes6-1').prop('checked', false);
+
+            });
+        });
+    </script>
+    <div class="below-slideshow">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="txt-block">
+                        <h1 class="head-line">Ton chat prefere</h1>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+<div class="just-sec">
+<div class="container">
+    <div class="col-lg-6 col-md-6 col-sm-46 col-xs-12">
+
+
+      <form class="form-horizontal" method="POST" action="#">
+                <fieldset id="fild">
+
+
+                    <!-- Form Name -->
+                    <legend><p align="center" >Sur une échelle de 1 à 3 (ex: 1 est peu affectueux, 3 est plus affectueux) évaluer votre niveau désiré des caractéristiques suivantes</p></legend>
+
+                    <!-- Multiple Checkboxes (inline) -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="checkboxes1">Accepter un autre animal</label>
+                        <div class="col-md-4" multiple="false">
+                            <label class="checkbox-inline" >
+                                <input name="tolererChien" id="checkboxes1-0" value="1" type="checkbox" >
+                                1
+                            </label>
+                            <label class="checkbox-inline" >
+                                <input name="tolererChien" id="checkboxes1-1" value="2" type="checkbox">
+                                2
+                            </label>
+                            <label class="checkbox-inline" >
+                                <input name="tolererChien" id="checkboxes1-2" value="3" type="checkbox">
+                                3
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Multiple Checkboxes (inline) -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="checkboxes2">Dynamique</label>
+                        <div class="col-md-4" multiple="false" >
+                            <label class="checkbox-inline" >
+                                <input name="dynamique" id="checkboxes2-0" value="1" type="checkbox" >
+                                1
+                            </label>
+                            <label class="checkbox-inline" >
+                                <input name="dynamique" id="checkboxes2-1" value="2" type="checkbox">
+                                2
+                            </label>
+                            <label class="checkbox-inline" >
+                                <input name="dynamique" id="checkboxes2-2" value="3" type="checkbox">
+                                3
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Multiple Checkboxes (inline) -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="checkboxes3">Affectueux</label>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline" >
+                                <input name="affectueux" id="checkboxes3-0" value="1" type="checkbox" >
+                                1
+                            </label>
+                            <label class="checkbox-inline" >
+                                <input name="affectueux" id="checkboxes3-1" value="2" type="checkbox">
+                                2
+                            </label>
+                            <label class="checkbox-inline" >
+                                <input name="affectueux" id="checkboxes3-2" value="3" type="checkbox">
+                                3
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Multiple Checkboxes (inline) -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="checkboxes4">Chute de poils</label>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline" >
+                                <input name="chutePoils" id="checkboxes4-0" value="1" type="checkbox" >
+                                1
+                            </label>
+                            <label class="checkbox-inline" >
+                                <input name="chutePoils" id="checkboxes4-1" value="2" type="checkbox">
+                                2
+                            </label>
+                            <label class="checkbox-inline" >
+                                <input name="chutePoils" id="checkboxes4-2" value="3" type="checkbox">
+                                3
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Multiple Checkboxes (inline) -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="checkboxes5">Intelligent</label>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline" >
+                                <input name="intelligent" id="checkboxes5-0" value="1" type="checkbox" >
+                                1
+                            </label>
+                            <label class="checkbox-inline" >
+                                <input name="intelligent" id="checkboxes5-1" value="2" type="checkbox">
+                                2
+                            </label>
+                            <label class="checkbox-inline" >
+                                <input name="intelligent" id="checkboxes5-2" value="3" type="checkbox">
+                                3
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Multiple Checkboxes (inline) -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="checkboxes6">Acceptation d'un etranger</label>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline" >
+                                <input name="acceptationEtranger" id="checkboxes6-0" value="1" type="checkbox" >
+                                1
+                            </label>
+                            <label class="checkbox-inline" >
+                                <input name="acceptationEtranger" id="checkboxes6-1" value="2" type="checkbox">
+                                2
+                            </label>
+                            <label class="checkbox-inline" >
+                                <input name="acceptationEtranger" id="checkboxes6-2" value="3" type="checkbox">
+                                3
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <h1 align="center"><button  type="submit" value="submit" class="btn btn-success" id="b">Trouver</button></h1>
+
+                </fieldset>
+
+            </form>
+    </div>
+            {% for ra in race %}
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="just-txt-div">
+
+                        <img src="{{asset('animaux/'~ ra.race.photo )}}" alt="" class="img-circle set-about-img">
+                        <h2><strong>{{ ra.race.race }}</strong>  </h2>
+                        <p>
+                            {{ ra.race.informations }}
+                        </p>
+
+                    </div>
+                </div>
+            {% endfor %}
+
+</div>
+</div>
+
+
+{%endblock %}

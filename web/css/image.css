@@ -1,0 +1,33 @@
+.ligne
+{
+    height: 306px;
+    width: 1170px;
+
+}
+#imageMagasin
+{
+  margin: 20px;
+
+}
+#image
+{
+    width: 380px ;
+    height: 250px;
+}
+.panier
+
+{
+    position: absolute;
+    right: 15px;
+    top:5px;
+    padding-top:30px;
+    display:flex;
+    text-decoration:none;
+    color: #696969;
+    text-transform: uppercase;
+}
+#consultation
+{
+    position: absolute;
+    top: 120px;
+}

@@ -1,0 +1,87 @@
+zanimaux_homepage:
+    path:     /
+    defaults: { _controller: EventAndAnnonceBundle:Default:index }
+
+add_e:
+    path:     /add
+    defaults: { _controller: EventAndAnnonceBundle:Evenement:add }
+
+read_e:
+    path:     /read
+    defaults: { _controller: EventAndAnnonceBundle:Evenement:read }
+
+update_e:
+    path:     /update/{idEvt}
+    defaults: { _controller: EventAndAnnonceBundle:Evenement:update }
+
+delete_e:
+    path:     /delete_e/{idEvt}
+    defaults: { _controller: EventAndAnnonceBundle:Evenement:delete }
+
+ajouter_a:
+    path:     /ajouter
+    defaults: { _controller: EventAndAnnonceBundle:Annonce:ajouter }
+
+modifier_a:
+    path:     /modifier/{idAnnonce}
+    defaults: { _controller: EventAndAnnonceBundle:Annonce:Modifier }
+
+supprimer_a:
+    path:     /supprimer/{idAnnonce}
+    defaults: { _controller: EventAndAnnonceBundle:Annonce:Supprimer }
+
+consulter_a:
+    path:     /consulter
+    defaults: { _controller: EventAndAnnonceBundle:Annonce:Consulter }
+rechercher_e:
+    path:     /rechercher
+    defaults: { _controller: EventAndAnnonceBundle:Evenement:rechercher }
+
+addAdmin:
+    path:     /addAdmin
+    defaults: { _controller: EventAndAnnonceBundle:Evenement:addAdmin }
+afficheAdmin:
+    path:     /afficheAdmin
+    defaults: { _controller: EventAndAnnonceBundle:Evenement:afficherEventAdmin }
+
+supprimerAdmin:
+    path:     /supprAdmin/{idEvt}
+    defaults: { _controller: EventAndAnnonceBundle:Evenement:supprimerEventAdmin }
+modifierAdmin:
+    path:     /modifAdmin/{idEvt}
+    defaults: { _controller: EventAndAnnonceBundle:Evenement:modifierAdmin }
+
+ajouterAnnonceAdmin:
+    path:     /ajouAnn
+    defaults: { _controller: EventAndAnnonceBundle:Annonce:addAnnonceAdmin}
+afficherAnnonceAdmin:
+    path:     /affAnn
+    defaults: { _controller: EventAndAnnonceBundle:Annonce:afficherAnnoncetAdmin}
+supprimerAnnonceAdmin:
+    path:     /supprAnn/{idAnnonce}
+    defaults: { _controller: EventAndAnnonceBundle:Annonce:supprimerAnnonceAdmin}
+
+modifierAnnonceAdmin:
+    path:     /modifAnn/{idAnnonce}
+    defaults: { _controller: EventAndAnnonceBundle:Annonce:modifierAnnonceAdmin}
+
+
+add_participation:
+    path:     /addParticipation/{idE}
+    defaults: { _controller: EventAndAnnonceBundle:Participation:addParticipation}
+annuler_participation:
+    path:     /annulerParticipation/{idE}
+    defaults: { _controller: EventAndAnnonceBundle:Participation:annulerParticipation}
+detailEvent:
+    path:     /detail/{idEvt}
+    defaults: { _controller: EventAndAnnonceBundle:Evenement:details}
+
+addFavoris:
+    path:     /addFavoris/{idA}
+    defaults: { _controller: EventAndAnnonceBundle:Favoris:addFavoris }
+annulerFavoris:
+    path:     /annulerFavoris/{idA}
+    defaults: { _controller: EventAndAnnonceBundle:Favoris:annulerFavoris }
+readFavoris:
+    path:     /readFav
+    defaults: { _controller: EventAndAnnonceBundle:Favoris:readFav }

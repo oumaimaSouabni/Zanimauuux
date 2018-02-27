@@ -1,0 +1,131 @@
+{% extends "VeterinaireBundle:Cabinet:dashboard_vet.html.twig" %}
+
+
+{% block head %}
+
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('adminpage/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/colorpicker.css')}}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/datepicker.css')}}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/uniform.css')}}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/select2.css')}}" />
+    <link rel="stylesheet" href="{{ asset('adminpage/css/bootstrap-wysihtml5.css')}}" />
+    <link href="{{ asset('adminpage/font-awesome/css/font-awesome.css')}}" rel="stylesheet" />
+    <link href="{{ asset('adminpage/css/formulaire.css')}}" rel="stylesheet" />
+
+{% endblock %}
+{% block bar_laterale %}
+
+    <div id="sidebar"><a href="{{ path('loginadmin') }}" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+        <ul class="nav">
+            <li ><a href="{{ path('affiche') }}"><i class="icon icon-home"></i> <span> Dashboard</span></a> </li>
+            <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span> Gestion Articles</span> <span class="label label-important">2</span></a>
+                <ul>
+                    <li class="active"> <a href="#"><i class="icon icon-signal"></i> <span> Ajout Article</span></a> </li>
+                    <li ><a href="{{ path('afficherArticlesBack') }}"><i class="icon icon-home"></i> <span> Afficher Articles</span></a> </li>
+                </ul>
+            </li>
+            <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span> Gestion Cabinets</span> <span class="label label-important">2</span></a>
+                <ul>
+                    <li class="active"> <a href="{{ path('addCabinet')}}"><i class="icon icon-signal"></i> <span>  Ajout Cabinet</span></a> </li>
+                    <li ><a href="{{ path('afficheCabinetBack')}}"><i class="icon icon-home"></i> <span>  Afficher Cabinet</span></a> </li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+{% endblock %}
+ {% block contenu %}
+
+     <div id="content">
+         <!--breadcrumbs-->
+         <div id="content-header">
+             <div id="breadcrumb"> <a href="{{ path('loginadmin') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+         </div>
+         <div class="widget-box">
+             <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+                 <h5>Formulaire cabinet</h5>
+             </div>
+             <div class="widget-content nopadding" >
+                 <form action="#" method="POST" class="form-horizontal" >
+                     <div class="control-group" id="cadre">
+                         <label class="control-label">Email Cabinet:</label>
+                         <div class="controls">
+                             <input type="text" class="span11" id="input" placeholder="Email de votre cabinet"
+                                    name="emailcabinet"/>
+                         </div>
+                     </div>
+                     <div class="control-group" id="cadre">
+                         <label class="control-label">Immatricule Cabinet:</label>
+                         <div class="controls">
+                             <input type="text" class="span11" id="input" placeholder="Immatricule cabinet " name="immatriculecabinet"/>
+                         </div>
+                     </div>
+                     <div class="control-group" id="cadre">
+                         <label class="control-label">Telephone Cabinet:</label>
+                         <div class="controls">
+                             <input type="text" class="span11" id="input" placeholder="Telephone " name="telephonecabinet"/>
+                         </div>
+                     </div>
+                     <div class="control-group" id="cadre">
+                         <label class="control-label">Fax Cabinet:</label>
+                         <div class="controls">
+                             <input type="text" class="span11" id="input" placeholder="Fax " name="faxcabinet"/>
+                         </div>
+                     </div>
+                     <div class="control-group" id="cadre">
+                         <label class="control-label">Adresse Cabinet:</label>
+                         <div class="controls">
+                             <input type="text" class="span11" id="input" placeholder="Adresse " name="adressecabinet"/>
+                         </div>
+                     </div>
+                     <div class="control-group" id="cadre">
+                         <label class="control-label">Ville Cabinet:</label>
+                         <div class="controls">
+                             <input type="text" class="span11" id="input" placeholder="Ville " name="villecabinet"/>
+                         </div>
+                     </div>
+                     <div class="control-group" id="cadre">
+                         <label class="control-label">CodePostale Cabinet:</label>
+                         <div class="controls">
+                             <input type="text" class="span11" id="input" placeholder="Code Postale " name="codepostalecabinet"/>
+                         </div>
+                     </div>
+
+                     <div class="control-group" id="cadre">
+                         <label class="control-label">Image Cabinet:</label>
+                         <div class="controls">
+                             <input type="file" name="photovet"/>
+                         </div>
+                     </div>
+                     <div class="form-actions">
+                         <button type="submit" value="submit" class="btn btn-success">Save</button>
+                     </div>
+                 </form>
+             </div>
+
+         </div>
+     </div>
+ {%endblock%}
+
+{% block script %}
+
+    <script src="{{ asset('js/jquery.min.js')}}"></script>
+    <script src="{{ asset('js/jquery.ui.custom.js')}}"></script>
+    <script src="{{ asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('js/bootstrap-colorpicker.js')}}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.js')}}"></script>
+    <script src="{{ asset('js/jquery.toggle.buttons.js')}}"></script>
+    <script src="{{ asset('js/masked.js')}}"></script>
+    <script src="{{ asset('js/jquery.uniform.js')}}"></script>
+    <script src="{{ asset('js/select2.min.js')}}"></script>
+    <script src="{{ asset('js/matrix.js')}}"></script>
+    <script src="{{ asset('js/matrix.form_common.js')}}"></script>
+    <script src="{{ asset('js/wysihtml5-0.3.0.js')}}"></script>
+    <script src="{{ asset('js/jquery.peity.min.js')}}"></script>
+    <script src="{{ asset('js/bootstrap-wysihtml5.js')}}"></script>
+    <script>
+        $('.textarea_editor').wysihtml5();
+    </script>
+{% endblock %}
+

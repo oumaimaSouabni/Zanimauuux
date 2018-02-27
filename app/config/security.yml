@@ -12,6 +12,7 @@ security:
         ROLE_PROPRIETAIRE_REFUGE:  ROLE_USER
         ROLE_PROPRIETAIRE_MAGASIN: ROLE_USER
         ROLE_DRESSEUR:             ROLE_USER
+        ROLE_PETSITTER:             ROLE_USER
 
 
     providers:
@@ -42,6 +43,7 @@ security:
         - { path: ^/affiche/, role: ROLE_DRESSEUR }
         - { path: ^/affiche/, role: ROLE_PROPRIETAIRE_MAGASIN }
         - { path: ^/affiche/, role: ROLE_PROPRIETAIRE_REFUGE }
+        - { path: ^/affiche/, role: ROLE_PETSITTER }
 
 
 

@@ -25,9 +25,6 @@
                             <li><a href="contact.html">Dresseur & pet-sitter</a></li>
                             <li><a href="features.html">Annonce</a></li>
                             <li><a href="contact.html">evenement</a></li>
-                            <li><a href="{{ path('inscription') }}" class="menu-top-active">s'inscrire</a></li>
-                            <li><a href="{{ path('login') }}">S'identifier</a></li>
-
                         </ul>
                     </div>
 
@@ -45,26 +42,37 @@
                 $(function() {
                     $( "#roleV" ).click(function() {
                         $( "#num" ).toggle();
+                        $("#numrc").hide();
                     });
                 });
                 $(function() {
                     $( "#roleC" ).click(function() {
                         $( "#num" ).hide();
+                        $("#numrc").hide();
                     });
                 });
                 $(function() {
                     $( "#roleD" ).click(function() {
                         $( "#num" ).hide();
+                        $("#numrc").hide();
                     });
                 });
                 $(function() {
                     $( "#roleM" ).click(function() {
                         $( "#num" ).hide();
+                        $("#numrc").toggle();
                     });
                 });
                 $(function() {
                     $( "#roleR" ).click(function() {
                         $( "#num" ).hide();
+                        $("#numrc").hide();
+                    });
+                });
+                $(function() {
+                    $( "#roleP" ).click(function() {
+                        $( "#num" ).hide();
+                        $("#numrc").hide();
                     });
                 });
 
@@ -74,6 +82,8 @@
                         $('#roleD').prop('checked', false);
                         $('#roleM').prop('checked', false);
                         $('#roleR').prop('checked', false);
+                        $('#roleP').prop('checked', false);
+
                     });
                 });
                 $(function() {
@@ -82,6 +92,8 @@
                         $('#roleD').prop('checked', false);
                         $('#roleM').prop('checked', false);
                         $('#roleR').prop('checked', false);
+                        $('#roleP').prop('checked', false);
+
                     });
                 });
                 $(function() {
@@ -90,6 +102,8 @@
                         $('#roleV').prop('checked', false);
                         $('#roleM').prop('checked', false);
                         $('#roleR').prop('checked', false);
+                        $('#roleP').prop('checked', false);
+
                     });
                 });
                 $(function() {
@@ -98,6 +112,8 @@
                         $('#roleD').prop('checked', false);
                         $('#roleV').prop('checked', false);
                         $('#roleR').prop('checked', false);
+                        $('#roleP').prop('checked', false);
+
                     });
                 });
                 $(function() {
@@ -106,7 +122,18 @@
                         $('#roleD').prop('checked', false);
                         $('#roleM').prop('checked', false);
                         $('#roleV').prop('checked', false);
-                    });
+                        $('#roleP').prop('checked', false);
+
+                    }); });
+                    $(function() {
+                        $('#roleP').click(function () {
+                            $('#roleC').prop('checked', false);
+                            $('#roleD').prop('checked', false);
+                            $('#roleM').prop('checked', false);
+                            $('#roleV').prop('checked', false);
+                            $('#roleR').prop('checked', false);
+
+                        });
                 });
 
             </script>
@@ -193,6 +220,9 @@
                             <input class="form-control" type="checkbox" id="roleD" name="fos_user_registration_form[roles][ROLE_DRESSEUR]" value="ROLE_DRESSEUR" />Dresseur
                             <input class="form-control" type="checkbox" id="roleM" name="fos_user_registration_form[roles][ROLE_PROPRIETAIRE_MAGASIN]" value="ROLE_PROPRIETAIRE_MAGASIN" />Proprietaire magasin
                             <input class="form-control" type="checkbox" id="roleR" name="fos_user_registration_form[roles][ROLE_PROPRIETAIRE_REFUGE]" value="ROLE_PROPRIETAIRE_REFUGE"/>Proprietaire refuge
+                            <input class="form-control" type="checkbox" id="roleP" name="fos_user_registration_form[roles][ROLE_PETSITTER]" value="ROLE_PETSITTER"/>PetSitter
+                            <input class="form-control" type="checkbox" id="roleP" name="fos_user_registration_form[roles][ROLE_SUPER_ADMIN]" value="ROLE_SUPER_ADMIN"/>admin
+
                         </div>
                     </div>
                     </div>
@@ -202,6 +232,8 @@
                             <input class="form-control" type="number" id="numeroOrdreOrdre" name="fos_user_registration_form[numeroOrdre]"/>
                         </div>
                     </div>
+
+
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <button type="submit" class="btn btn-primary">Valider <span class="glyphicon glyphicon-ok"></span></button>
@@ -211,6 +243,7 @@
 
                 {{ form_widget(form._token) }}
             </form>
+
 
         {% endblock %}
     {%endblock %}

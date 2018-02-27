@@ -1,0 +1,91 @@
+{% extends "ZanimauxBundle:User:InterfaceDresseur.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block head %}
+    {{ parent() }}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>{% block title %}{{ parent() }} -profile{% endblock %}</title>
+    <script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>
+{% endblock %}
+
+{% block menu %}
+    <section class="menu-section">
+        <form class="navbar-form navbar-right" method="post" action="{{ path('rechercher_e') }}">
+            <nav>
+                <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" name="motcle">
+            </nav>
+        </form>
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-12">
+                    <div class="navbar-collapse collapse ">
+                        <ul id="menu-top" class="nav navbar-nav navbar-right">
+                            <li><a href="{{ path('redirectDresseur') }}">Accueil</a></li>
+                            <li><a href="index.html">Veterinaire</a></li>
+                            <li><a href="{{ path('consulter_a') }}">Annonce</a></li>
+                            <li><a href="{{ path('read_e') }}" >Evenement</a></li>
+                            <li><a href="{{ path('listparc') }}">Parc</a></li>
+                            <li><a href="{{ path('profileDresseur') }}" class="menu-top-active">Profil</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+    {% block contenu %}
+        <div class="just-sec" id="port-folio">
+
+
+        <div class="container">
+
+            <div class="row " >
+                <ul id="filters" >
+                    <table border="0"align="center">
+                        <tr>
+
+                            <td style="padding-right:50px;">Lieu</td>
+                            <td style="padding-right:50px;">date de debut</td>
+                            <td style="padding-right:50px;">date de fin</td>
+                            <td style="padding-right:50px;">Type</td>
+                            <td style="padding-right:50px;">Titre</td>
+                            <td style="padding-right:50px;"></td>
+
+                        </tr>
+
+
+                            <tr>
+                                <td style="padding-right:50px;">{{ evenement.lieu}}</td>
+                                <td style="padding-right:50px;">{{ evenement.datedebut|date('d-m-y') }}</td>
+                                <td style="padding-right:50px;">{{ evenement.datefin|date('d-m-y') }}</td>
+                                <td style="padding-right:50px;">{{ evenement.type }}</td>
+                                <td style="padding-right:50px;">{{ evenement.titre }}</td>
+
+
+                                {% if  verif==1 %}
+                                <td  style="padding-right:50px;" class="btn btn-primary btn-warning"> Plein </td>
+                            {% elseif participer is null %}
+                                <td><a href="{{ path("add_participation",{ "idE": evenement.idEvt })}}"class="btn btn-primary btn-success">Participer</a></td>
+
+                                {% else %}
+                                    <td><a href="{{ path('annuler_participation',{"idE":evenement.idEvt}) }}" class="btn btn-primary btn-danger">Annuler </a> </td>
+
+
+
+                            {% endif  %}
+                            </tr>
+
+                    </table>
+                </ul>
+
+
+
+            </div>
+        </div>
+    {%endblock %}

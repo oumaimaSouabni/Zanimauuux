@@ -1,0 +1,176 @@
+{% extends "ZanimauxBundle:User:Layout2.html.twig" %}
+{% block head %}
+    {{ parent() }}
+    <title>{% block title %}Nos Produits{% endblock %}</title>
+    {% block stylesheet %}
+        {{ parent() }}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js') }}">
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css') }}">
+        <link rel="stylesheet" href={{ asset('Produit/shop-homepage.css') }}>
+        <script src="{{ asset('Produit/vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('Produit/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <link href="{{ asset('Produit/imageProduit.css') }}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+
+
+    {% endblock %}
+{% endblock %}
+{% block up %}
+<div id="container">
+
+    <!------ Include the above in your HEAD tag ---------->
+
+    <nav class="navbar navbar-default navbar-fixed-top" style="height: 1px">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('redirect') }}"><img src="{{ asset('img/logo2.png') }}" style="position: absolute;	top: 0;left: O;bottom: 0; "/></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <ul class="nav navbar-nav" style="position: absolute;	top: 0;right: 0;bottom: 0; ">
+                    <li style="margin-right : 0.5px;font-size: x-small;"> <div   class="cont" ><a data-animation="ripple" href="{{ path('deconnexion') }}" ><i class="fas fa-paw"></i> Déconnexion</a></div> <span class="sr-only">(current)<p>      </p></span></li>
+                    <li>  <div class="cont"><a  style="text-align: center;font-size: x-small;" data-animation="ripple" href="{{ path('profile') }}" ><i class="fas fa-paw"></i> Profil</a></div></li>
+                </ul>
+
+
+
+                <ul class="nav navbar-nav navbar-right" style="position: absolute;	top: 0;right: 240px;bottom: 0; ">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="glyphicon glyphicon-shopping-cart"></span>{{ panier.Somme }}DT<span class="caret"></span></a>
+                        <ul class="dropdown-menu dropdown-cart" role="menu">
+                            {% for p in cPanier%}
+                                <li>
+                  <span class="item">
+                    <span class="item-left">
+                        <img src="{{asset('img/produit/'~p.IdProduit.photoProduit )}}" style="height:100px; width:100px"/></br>
+                        <span class="item-info">
+                            <span>Libelle: {{ p.IdProduit.libelle }}</span></br>
+                            <span>Quantité:{{ p.quantite }}</span></br>
+                            <span>Prix:{{ p.idProduit.prix *p.quantite }} dt</span></br>
+                        </span>
+                    </span>
+                    <span class="item-right">
+                        <button class="btn btn-xs btn-danger pull-right"><a href="{{ path('suppProduit_p',{'idContenuPanier':p.IdContenuPanier,'prix':p.idProduit.prix,'quantite':p.quantite }) }}">x</a></button>
+                    </span>
+                </span>
+                                </li>
+                            {% endfor %}
+
+                            <li class="divider"></li>
+                            <li><a class="text-center" href="{{ path('affichePanier') }}">Voir Panier</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div>
+
+    </div>
+
+
+    {% block menu %}
+        <section class="menu-section" >
+            <div class="container">
+                <div class="row ">
+                    <div class="col-md-12" style=" margin-top : 50px">
+
+                        <div class="navbar-collapse collapse " style="text-align:center; font-family:  sans-serif; ">
+                            <ul id="menu-top" class="nav navbar-nav navbar-right">
+                                <li><a href="{{ path('redirect') }}"  style="font-size: 14px;color:  #b3d7ff ; "><i class="fas fa-paw"></i> Accueil <i class="fas fa-paw"></i></a></li>
+                                <li><a href="index.html" style="font-size: 14px; color:  #b3d7ff ; "><i class="fas fa-paw"></i> Veterinaire <i class="fas fa-paw"></i></a></li>
+                                <li><a href="about.html" style="font-size: 14px; color:  #b3d7ff ;"><i class="fas fa-paw" ></i> Refuge <i class="fas fa-paw"></i></a></li>
+                                <li ><a href="{{ path('affiche_m') }}" style="font-size: 14px;color:  #b3d7ff ; " ><i class="fas fa-paw" class="menu-top-active"></i> Magasin <i class="fas fa-paw"></i></a></li>
+                                <li><a href="contact.html" style="font-size: 14px;color:  #b3d7ff ; "><i class="fas fa-paw"></i> Dresseur & pet-sitter <i class="fas fa-paw"></i></a></li>
+                                <li><a href="features.html" style="font-size: 14px; color:  #b3d7ff ;"><i class="fas fa-paw"></i> Annonce <i class="fas fa-paw"></i></a></li>
+                                <li><a href="contact.html" style="font-size: 14px;color:  #b3d7ff ; "><i class="fas fa-paw"></i> evenement <i class="fas fa-paw"></i></a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+    {% endblock %}
+    {% block contenu %}
+        <div class="wrapper">
+            <!-- Sidebar Holder -->
+
+
+            <!-- Page Content Holder -->
+            <div id="content">
+
+                <div class="row">
+                    {% for produit in produits %}
+
+                        <div class="col-lg-4 col-md-6 mb-4 oumaima" style="width: 300px; border-radius: 15px">
+                            <div class="card h-100 ">
+                                <a href="#"><img class="card-img-top image" src="{{asset('img/produit/'~produit.photoProduit )}}" style="height:270px"></a>
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a href="#">{{ produit.libelle }}</a>
+                                    </h4>
+                                    <h5> {{ produit.Prix }}DT </h5>
+                                    <h5>{{ produit.description }}</h5>
+                                    <p class="card-text"></p>
+                                </div>
+                                <div class="action" style="padding: 12px">
+                                    <a class="add-to-cart btn btn-default " style="width: 170px;text-align: center; background: linear-gradient(135deg, #b3d7ff 0%,#bee5eb 100%);"  href="{{ path('ajoutProduit_p',{'idProduit': produit.idProduit,'prix':produit.prix}) }}" >Ajouter au panier</a>
+                                    <button class="like btn btn-default "   style="width: 50px;background: linear-gradient(135deg, #b3d7ff 0%,#bee5eb 100%);"   type="button"><span class="fa fa-heart"></span></button>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted"></small></div>
+
+                            </div>
+                        </div>
+
+                    {% endfor %}
+
+
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.col-lg-9 -->
+
+        </div>
+        <!-- /.row -->
+
+
+
+        <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <!-- Bootstrap Js CDN -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script defer src="{{ asset('https://use.fontawesome.com/releases/v5.0.6/js/all.js') }}"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.O/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').toggleClass('active');
+                });
+            });
+        </script>
+    {% endblock %}

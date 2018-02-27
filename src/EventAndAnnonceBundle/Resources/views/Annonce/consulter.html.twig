@@ -1,0 +1,94 @@
+{% extends "ZanimauxBundle:User:InterfaceDresseur.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block head %}
+    {{ parent() }}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>{% block title %}{{ parent() }} -profile{% endblock %}</title>
+    <script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>
+{% endblock %}
+
+{% block menu %}
+    <section class="menu-section">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-12">
+
+                    <div class="navbar-collapse collapse ">
+                        <ul id="menu-top" class="nav navbar-nav navbar-right">
+                            <li><a href="{{ path('redirectDresseur') }}">Accueil</a></li>
+                            <li><a href="index.html">Veterinaire</a></li>
+                            <li><a href="{{ path('consulter_a') }}">Annonce</a></li>
+                            <li><a href="{{ path('readFavoris') }}">Mes Annonces Favoris</a></li>
+                            <li><a href="{{ path('read_e') }}" >Evenement</a></li>
+                            <li><a href="{{ path('listparc') }}">Parc</a></li>
+                            <li><a href="{{ path('profileDresseur') }}" class="menu-top-active">Profil</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block contenu %}
+<div class="just-sec" id="port-folio">
+
+
+    <div class="container">
+
+        <div class="row " >
+            <ul id="filters" >
+
+                <table border="0"align="center">
+                    <tr>
+
+                        <td style="padding-right:50px;">Titre</td>
+                        <td style="padding-right:50px;">Type </td>
+                        <td style="padding-right:50px;">Description</td>
+                        <td style="padding-right:50px;">Piece jointe</td>
+
+
+
+
+                    </tr>
+
+                    {% for annonce in annonces %}
+                        <tr>
+                            <td style="padding-right:50px;">{{ annonce.titre}}</td>
+                            <td style="padding-right:50px;">{{ annonce.type}}</td>
+                            <td style="padding-right:50px;">{{ annonce.description }}</td>
+                            <td style="padding-right:50px;">{{ annonce.pieceJointe }}</td>
+                            {% if  annonce.cin == user.id  %}
+                                <td><a href="{{ path("modifier_a",{ "idAnnonce":annonce.idAnnonce})}}" class="btn btn-primary btn-mini">Modifier</a></td>
+                                <td><a href="{{ path("supprimer_a",{ "idAnnonce": annonce.idAnnonce })}}" class="btn btn-primary btn-danger">Supprimer</a></td>
+                            {% endif %}
+                             {% set v=0 %}
+                            {% for f in favoris  %}
+                            {% if f.getIdA()==annonce.getIdAnnonce %}
+                            {% set v=1 %}
+                            {% endif %}{% endfor %}
+                            {% if v==1 %}
+                            <td><a href="{{ path("annulerFavoris",{ "idA": annonce.idAnnonce })}}"><span class="fa fa-heart-o"></span></a></td>
+                            {% else %}
+
+                            <td><a href="{{ path("addFavoris",{ "idA": annonce.idAnnonce })}}"><span class="fa fa-heart"></span></a></td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </table>
+                </br>
+                <button type="button"> <a style="color: black" href="{{ path('ajouter_a') }}">Ajouter Annonce</a></button>
+
+            </ul>
+
+        </div>
+    </div>
+    <div class="navigation">
+        {{ knp_pagination_render(annonces) }}
+    </div>
+{%endblock %}

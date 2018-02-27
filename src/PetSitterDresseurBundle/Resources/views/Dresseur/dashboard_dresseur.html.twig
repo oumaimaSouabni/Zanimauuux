@@ -1,0 +1,81 @@
+{% extends "ZanimauxBundle:User:dashboard.html.twig" %}
+
+{% block head %}
+    {{ parent() }}
+        <title>Dashboard Dresseur</title>
+{% endblock %}
+
+    {% block bar_laterale %}
+        <div id="sidebar"><a href="{{ path('loginadmin') }}" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+            <ul>
+                <li class="active"><a href="{{ path('redirectDresseur') }}"><i class="icon icon-home"></i> <span>Mes Parcs</span></a> </li>
+                <li> <a href="{{ path('creerparc') }}"><i class="icon icon-signal"></i> <span>Ajout Parc</span></a> </li>
+                <li> <a href="{{ path('profileDresseur') }}"><i class="icon icon-inbox"></i> <span>Profile</span></a> </li>
+
+        </div>
+    {% endblock %}
+        {% block contenu %}
+            <div id="content">
+            <!--breadcrumbs-->
+            <div id="content-header">
+                <div id="breadcrumb"> <a href="{{ path('loginadmin') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+            </div>
+            <center>
+                <form action="{{ path('recherche_Parc_DQL') }}?chose=" class="form-horizontal group-border-dashed" novalidate="">
+                    <div class="form-group">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <input placeholder="Recherche" name="chose" class="form-control" type="text">
+                        </div>
+                    </div>
+                </form>
+            </center>
+
+            {% block tsawer_kol %}
+
+
+                <div class="widget-content nopadding">
+
+
+                    <table  class="recent-posts">
+                        {% for parcs in Parc %}
+                            <tr>
+                                <td height="150" width="180">  <img width="174.217" height="130.667" alt="User" src="{{asset('refuges/'~ parcs.photoParc)}}"> </td>
+                                <div class="article-post">
+
+                                    <td width="400"> <span class="user-info">
+                                                  <b>Nom:</b>  {{ parcs.nomParc }}<br>
+                                                         <b>Adresse du parc:</b> {{ parcs.adresseParc }}<br>
+                                                         <b>Ville du parc:</b>  {{ parcs.villeParc }} <br>
+                                                          <b>Code postale:</b> {{ parcs.codePostaleParc }}<br>
+                                                         <b> Categorie de dressage: </b>{{ parcs.CategorieDressage }}<br>
+                                                       </span>
+                                    </td>
+                                    <td> <div class="fr"><a href="{{ path('editparc',{'id':parcs.id }) }}" class="btn btn-primary btn-mini" ><i class="icon-pencil"></i> Edit</a>
+                                            <a href="{{ path('deleteparc',{'id':parcs.id }) }}" class="btn btn-danger btn-mini" ><i class="icon-remove"></i> Delete</a>
+                                        </div>
+                                    </td>
+
+                                </div>
+                            </tr>
+
+
+                        {% endfor %}
+                    </table>
+
+                    <a href="{{ path('listparc') }}"><button  class="btn btn-warning btn-mini" >Visualiser les parcs en tant que client</button></a>
+
+                </div>
+                </div>
+
+
+
+            {% endblock %}
+
+
+
+
+
+        </div>
+    {% endblock %}
+

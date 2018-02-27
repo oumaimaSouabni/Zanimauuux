@@ -1,0 +1,248 @@
+<html>
+<head>
+
+     {% block head %}
+
+         <meta charset="UTF-8" />
+         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+         <link rel="stylesheet" href="{{ asset('adminpage/css/bootstrap.min.css') }}" />
+         <link rel="stylesheet" href="{{ asset('adminpage/css/bootstrap-responsive.min.css') }}" />
+         <link rel="stylesheet" href="{{ asset('adminpage/css/uniform.css') }}" />
+         <link rel="stylesheet" href="{{ asset('adminpage/css/matrix-style.css') }}" />
+         <link rel="stylesheet" href="{{ asset('adminpage/css/matrix-media.css') }}" />
+         <link href="{{ asset('adminpage/font-awesome/css/font-awesome.css') }}" rel="stylesheet" />
+         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+         <script src="{{ asset('adminpage/js/jquery.min.js') }}"></script>
+         <script src="{{ asset('adminpage/js/jquery.ui.custom.js') }}"></script>
+         <script src="{{ asset('adminpage/js/bootstrap.min.js') }}"></script>
+         <script src="{{ asset('adminpage/js/jquery.uniform.js') }}"></script>
+         {#<script src="{{ asset('adminpage/js/select2.min.js') }}"></script>#}
+         <script src="{{ asset('adminpage/js/jquery.validate.js') }}"></script>
+         <script src="{{ asset('adminpage/js/matrix.js') }}"></script>
+         <script src="{{ asset('adminpage/js/matrix.form_validation.js') }}"></script>
+    <meta charset="utf-8"/>
+    <title>{% block title %}Layout principal {% endblock %}</title>
+    {% block stylesheet %}
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
+        <link href="{{  asset('css/bootstrap.css') }}" rel="stylesheet" />
+        <!-- FONT AWESOME STYLE  -->
+        <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet" />
+        <!-- ANIMATE STYLE  -->
+        <link href="{{ asset('css/animate.css') }}" rel="stylesheet" />
+        <!-- FLEXSLIDER STYLE  -->
+        <link href="{{ asset('css/flexslider.css') }}" rel="stylesheet" />
+        <!-- CUSTOM STYLE  -->
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+        <link rel="stylesheet" href="{{ asset('adminpage/css/matrix-style.css') }}" />
+
+
+
+        <!-- GOOGLE FONTS  -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css' />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+        <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css' />
+
+    {% endblock %}
+    {% endblock %}
+</head>
+<body>
+{% block up %}
+<div id="container">
+<div class="navbar navbar-inverse set-radius-zero" >
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ path('affiche') }}">
+                <img src="{{ asset('img/logo2.png') }}" />
+            </a>
+
+        </div>
+        <div class="right-div">
+            <nav>
+                <a style="color: #444444" href="{{ path('inscription') }}" class="button">S'inscrire</a>
+                <a style="color: #444444" href="{{ path('login') }}" class="button">S'authentifier</a>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- LOGO HEADER END-->
+{% block menu %}
+<section class="menu-section">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-12">
+
+                <div class="navbar-collapse collapse ">
+                    <ul id="menu-top" class="nav navbar-nav navbar-right">
+                        <li><a href="{{ path('affiche') }}"  >Accueil</a></li>
+                        <li><a href="{{ path('affiche') }}"  >Veterinaire</a></li>
+                        <li><a href="{{ path('indexHWCalculator') }}" class="menu-top-active">Calcul Indice PS</a></li>
+                        <li><a href="about.html">Refuge</a></li>
+                        <li><a href="gallery.html" >Magasin</a></li>
+                        <li><a href="contact.html">Dresseur & pet-sitter</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% endblock %}
+<!-- MENU SECTION END-->
+</div>
+    {% block  contenu%}
+        <div class="span2">
+
+        </div>
+    <div id="content">
+        <!--breadcrumbs-->
+        <div id="content-header">
+
+            <div id="breadcrumb" style="margin-top:50px"> <a href="{{ path('loginadmin') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home > </a></div>
+        </div>
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+
+                <div class="span6">  <h4> Calculateur Santé Poid de l'animal </h4> </div>
+                <div class="span11">
+                    <div class="widget-box">
+
+                        <div class="widget-content nopadding" >
+                            <div class="widget-content" id="divFormCalcul">
+
+                                <form role="form" class="form-horizontal"  action="{{ path('HWResult') }}"  method="POST">
+                                        <h3 class="title title--3">Premières choses d'abord.</h3>
+                                        <p>Nous avons besoin de cette information pour pouvoir évaluer votre animal de compagnie.</p>
+
+                                        <div class="controls controls-row">
+
+                                            <input id="nom_animal" name="nom_animal"  required="required"    type="text"
+                                                placeholder="Saisir le nom" class="span3" data-original-title="" title="">
+
+                                            <label class="span1"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                            <label class="select select-normal span3">
+                                                <select name="type_animal" id="type_animal" required="required"  data-original-title="" title="">
+                                                    <option value="" title="Type animal">Type de l'animal</option>
+                                                    <option value="2" title="Dog">Chien</option>
+                                                    <option value="1" title="Cat">Chat</option>
+                                                </select>
+                                            </label>
+                                        </div>
+                                        <div class="controls controls-row" id="weight">
+                                            <input id="poid_animal" name="poid_animal" required="required" type="number" placeholder="Saisir le poid"
+                                                   class="span3" data-original-title="" title="">
+                                            <label class="span1">lbs&nbsp;</label>
+
+                                            <label class="select select-normal span3">
+                                                <select id="niveau_activite" name="niveau_activite" required="required"  class="" data-original-title="" title="">
+                                                    <option value="" title="Activity level">Niveau d'activité</option>
+                                                    <option value="0" title="Low">Faible</option>
+                                                    <option value="1" title="Medium">Moyen</option>
+                                                    <option value="2" title="High">Elevé</option>
+                                                </select>
+                                            </label>
+                                        </div>
+
+                                        <div class="controls controls-row">
+                                            <label class="select select-normal span3">
+                                                <select name="neutered" required="required"   id="neutered">
+                                                    <option value="" title="Spayed / Neutered?"> Stérilisé?</option>
+                                                    <option value="1" title="Yes">Oui</option>
+                                                    <option value="0" title="No">Non</option>
+                                                    <option title="Not sure">Pas sure</option>
+                                                </select>
+                                            </label>
+                                        </div>
+                                        <br>
+                                        <div class="form-actions actionButtons right">
+                                            <button class="btn btn-info"  type="submit" value="submitvg" id="pet_submit">Commencer</button>
+                                        </div>
+
+                                        <div class="helpfulsTotal"><br>
+                                            <p>471 des parents des animaux de compagnie ont trouvé cet outil utile.</p>
+                                        </div>
+<br>
+                                </form>
+
+                                <img src="{{ asset('img/portfolio/vetPou.jpg') }}" width="300px" align="right" style="position: relative;margin-top: -360px;margin-right: 65px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- SLIDESHOW SECTION END-->
+<div class="below-slideshow">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="txt-block">
+
+
+                    <i class="fa fa-lastfm fa-4x"></i>
+                    <h4> </h4>
+                    <p >
+
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="txt-block">
+
+
+                    <i class="fa fa-yelp fa-4x"></i>
+                    <h4>Free To Download</h4>
+                    <p >
+
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="txt-block">
+
+
+                    <i class="fa fa-ioxhost fa-4x"></i>
+                    <h4> </h4>
+                    <p >
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- BELOW SLIDESHOW SECTION END-->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <hr />
+        </div>
+    </div>
+</div>
+<!-- TAG HOME SECTION END-->
+ {% endblock %}
+
+
+
+<script type="javascript">
+
+</script>
+<style type="text/css">
+    .form-horizontal .controls {
+        margin-left: 20px;
+    }
+</style>
+</body>
+
+</html>

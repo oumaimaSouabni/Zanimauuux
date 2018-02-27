@@ -1,0 +1,27 @@
+{% extends "ZanimauxBundle:User:dashboard.html.twig" %}
+
+{% block head %}
+    {{ parent() }}
+        <title>Dashboard Magasinier</title>
+{% endblock %}
+
+    {% block bar_laterale %}
+        <div id="sidebar"><a href="{{ path('loginadmin') }}" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+            <ul>
+                <li class="active"><a href="{{ path('afficheMagasinProp') }}"><i class="fas fa-user"></i><span>Mes Magasins</span></a> </li>
+                <li> <a href="{{ path('ajout_m')}}"><i class="icon icon-signal"></i> <span>Ajout Magasin</span></a> </li>
+                <li> <a href="{{ path('affichePrduit_mDash')}}"><i class="icon icon-inbox"></i> <span>Gestion Produits</span></a> </li>
+                <li><a href="{{ asset('adminpage/tables.html') }}"><i class="icon icon-th"></i> <span>Gestion Clients</span></a></li>
+            </ul>
+        </div>
+    {% endblock %}
+        {% block contenu %}
+            <div id="content">
+            <!--breadcrumbs-->
+            <div id="content-header">
+                <div id="breadcrumb"> <a href="{{ path('loginadmin') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+            </div>
+
+        </div>
+    {% endblock %}
+

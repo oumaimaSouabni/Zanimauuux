@@ -1,0 +1,74 @@
+{% extends "@Zanimaux/Produit/gallery.html.twig" %}
+
+
+{% block bar_laterale %}
+    <div id="sidebar"><a href="{{ path('loginadmin') }}" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+        <ul>
+            <li ><a href="{{path('afficheMagasinProp') }}"><i class="icon icon-home"></i> <span>Mes magasins</span></a> </li>
+            <li> <a href="{{ path('ajout_m')}}"><i class="icon icon-signal"></i> <span>Ajouter Magasin</span></a> </li>
+            <li class="active"> <a href="{{ path('affichePrduit_mDash')}}"><i class="icon icon-inbox"></i> <span>Gestion Produits</span></a> </li>
+            <li><a href="{{ asset('adminpage/tables.html') }}"><i class="icon icon-th"></i> <span>Gestion Clients</span></a></li>
+
+        </ul>
+    </div>
+{% endblock %}
+{% block contenu %}
+{% block esm_li_melfou9_belkol %}
+    <div>
+        <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> </a> <a href="affichePrduit_mDash" class="current">Gestion Produit</a> </div>
+        <h1>Gestion des Produits</h1>
+    </div>
+{% endblock %}
+
+            {% block esm_li_melfou9 %}
+
+                <div class="span12" >
+
+                    <div class="widget-box" >
+                        <div class="widget-title"> <span class="icon"> <i class="icon-picture"></i> </span>
+                            <h5>Liste Produit</h5>
+                        </div>
+                        {% block tsawer_kol %}
+
+                        <div class="widget-content nopadding">
+
+                            <table  class="recent-posts">
+                                {% for produit in produits %}
+
+
+                                    <tr >
+                                        <td height="150" width="180">  <img width="174.217" height="130.667" alt="User" src="{{asset('img/produit/'~ produit.photoProduit )}} "> </td>
+                                        <div class="article-post">
+
+                                            <td height="140" width="600"> <span class="user-info">
+                                                         <b>Libelle: </b>{{ produit.libelle }}<br>
+                                                         <b>Marque: </b>{{ produit.marque }}<br>
+                                                         <b>Prix: </b>{{ produit.prix }}<br>
+                                                         <b>Quantité: </b>{{ produit.quantite }}<br>
+
+                                                       </span>
+                                            </td>
+                                            <td > <div class="fr"><a href="{{ path('modifProduit_m',{'idProduit':produit.idProduit }) }}" class="btn btn-primary btn-mini" >Modifier Produit </a>
+                                                    <a href="{{ path('suppProduit_m',{'idProduit':produit.idProduit }) }}" class="btn btn-danger btn-mini">Supprimer Produit</a>
+                                                </div>
+                                            </td>
+
+                                        </div>
+                                    </tr>
+
+
+                                {% endfor %}
+                            </table>
+
+
+
+                        </div>
+                    </div>
+                    <a href="{{ path('ajoutProduit_m') }}"><button  class="btn btn-warning btn-mini" >Ajouter Produit</button></a>
+
+
+                    {% endblock %}
+                </div>
+                </div>
+            {% endblock %}
+{% endblock %}
